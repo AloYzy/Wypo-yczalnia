@@ -30,7 +30,7 @@ namespace Wypozyczalnia
 
     public enum EnumEngineType
     {
-        Beznynowy,
+        Benzynowy,
         Diesel,
         Hybrydowy
     }

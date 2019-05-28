@@ -73,6 +73,8 @@
             this.gearboxRadioButton2 = new System.Windows.Forms.RadioButton();
             this.gearboxRadioButton1 = new System.Windows.Forms.RadioButton();
             this.samochodyTableAdapter = new Wypozyczalnia.WypozyczalniaDataSetTableAdapters.SamochodyTableAdapter();
+            this.edytujSamochodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usunSamochodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.showCarsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.allCarsDataGridView)).BeginInit();
@@ -108,7 +110,9 @@
             this.pokazSamochodyToolStripMenuItem1,
             this.wypozyczSamochodToolStripMenuItem,
             this.odbierzSamochodToolStripMenuItem,
-            this.dodajSamochodToolStripMenuItem});
+            this.dodajSamochodToolStripMenuItem,
+            this.edytujSamochodToolStripMenuItem,
+            this.usunSamochodToolStripMenuItem});
             this.zarzadzajSamochodyToolStripMenuItem.Name = "zarzadzajSamochodyToolStripMenuItem";
             this.zarzadzajSamochodyToolStripMenuItem.Size = new System.Drawing.Size(147, 20);
             this.zarzadzajSamochodyToolStripMenuItem.Text = "Zarządzaj samochodami";
@@ -510,6 +514,19 @@
             // 
             this.samochodyTableAdapter.ClearBeforeFill = true;
             // 
+            // edytujSamochodToolStripMenuItem
+            // 
+            this.edytujSamochodToolStripMenuItem.Name = "edytujSamochodToolStripMenuItem";
+            this.edytujSamochodToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.edytujSamochodToolStripMenuItem.Text = "Edytuj samochód";
+            this.edytujSamochodToolStripMenuItem.Click += new System.EventHandler(this.EdytujSamochodToolStripMenuItem_Click);
+            // 
+            // usunSamochodToolStripMenuItem
+            // 
+            this.usunSamochodToolStripMenuItem.Name = "usunSamochodToolStripMenuItem";
+            this.usunSamochodToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.usunSamochodToolStripMenuItem.Text = "Usuń samochód";
+            // 
             // MainWindowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -593,6 +610,8 @@
         private System.Windows.Forms.GroupBox gearboxGroupBox;
         private System.Windows.Forms.RadioButton gearboxRadioButton2;
         private System.Windows.Forms.RadioButton gearboxRadioButton1;
+        private System.Windows.Forms.ToolStripMenuItem edytujSamochodToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usunSamochodToolStripMenuItem;
     }
 }
 

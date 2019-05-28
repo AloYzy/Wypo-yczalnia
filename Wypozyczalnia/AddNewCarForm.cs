@@ -66,7 +66,7 @@ namespace Wypozyczalnia
                     sqlConnection.Open();
                     SqlCommand query = sqlConnection.CreateCommand();
                     query.CommandText = $"INSERT INTO samochody (klasa, marka, model, [rok produkcji], [rodzaj napędu], [skrzynia biegów], silnik, status, [koszt wynajęcia], vin, [numer rejestracyjny]) " +
-                        $"VALUES('{this.categoryComboBox.Text}', '{this.manufacturerTextBox.Text.ToUpper()}', '{this.modelTextBox.Text.ToUpper()}', '2019-01-05', '{this.driveTypeComboBox.Text}', '{this.gearBoxComboBox.Text}', '{this.engineTypeComboBox.Text}', '{EnumStatus.Dostępny}', '{this.costTextBox.Text}', '{this.VINTextBox.Text.ToUpper()}', '{this.LicensePlateNumberTextBox.Text.ToUpper()}')";
+                        $"VALUES('{this.categoryComboBox.Text}', '{this.manufacturerTextBox.Text.ToUpper()}', '{this.modelTextBox.Text.ToUpper()}', '{this.productionYearDateTimePicker.Value.ToString("yyyy-MM-dd")}', '{this.driveTypeComboBox.Text}', '{this.gearBoxComboBox.Text}', '{this.engineTypeComboBox.Text}', '{EnumStatus.Dostępny}', '{this.costTextBox.Text}', '{this.VINTextBox.Text.ToUpper()}', '{this.LicensePlateNumberTextBox.Text.ToUpper()}')";
                     query.ExecuteNonQuery();
                     sqlConnection.Close();
 

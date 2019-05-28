@@ -110,5 +110,11 @@ namespace Wypozyczalnia
             Form addNewCarForm = new AddNewCarForm();
             addNewCarForm.ShowDialog();
         }
+
+        private void EdytujSamochodToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form modifyCarForm = new ModifyCarForm();
+            modifyCarForm.ShowDialog();
+        }
     }
 }
