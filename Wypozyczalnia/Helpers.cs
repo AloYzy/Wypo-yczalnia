@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace Wypozyczalnia
 {
     class Helpers
     {
+        public const string connectionString = "Data source=DESKTOP-ESRM8PV;database=Wypozyczalnia;User id = admin;Password=admin;";
 
         public static Dictionary<Boolean, string> ValidateVINNumber(string VIN)
         {
@@ -51,6 +53,46 @@ namespace Wypozyczalnia
             return validationResult;
         }
 
+        public static Boolean IsVINPresent(string VIN)
+        {
+            Boolean exists = false;
 
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = connectionString;
+                sqlConnection.Open();
+
+                SqlCommand query = sqlConnection.CreateCommand();
+                query.CommandText = $"select * from samochody where VIN = '{VIN}'";
+                SqlDataReader dataReader = query.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    exists = true;
+                }
+            }
+
+            return exists;
+        }
+
+        public static Boolean IsLicensePlateNumberPresent(string licPlateNum)
+        {
+            Boolean exists = false;
+
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = connectionString;
+                sqlConnection.Open();
+
+                SqlCommand query = sqlConnection.CreateCommand();
+                query.CommandText = $"select * from samochody where [Numer rejestracyjny] = '{licPlateNum}'";
+                SqlDataReader dataReader = query.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    exists = true;
+                }
+            }
+
+            return exists;
+        }
     }
 }

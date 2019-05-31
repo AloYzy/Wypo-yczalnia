@@ -66,7 +66,7 @@ namespace Wypozyczalnia
                     sqlConnection.Open();
                     SqlCommand query = sqlConnection.CreateCommand();
                     query.CommandText = $"INSERT INTO samochody (klasa, marka, model, [rok produkcji], [rodzaj napędu], [skrzynia biegów], silnik, status, [koszt wynajęcia], vin, [numer rejestracyjny]) " +
-                        $"VALUES('{this.categoryComboBox.Text}', '{this.manufacturerTextBox.Text.ToUpper()}', '{this.modelTextBox.Text.ToUpper()}', '{this.productionYearDateTimePicker.Value.ToString("yyyy-MM-dd")}', '{this.driveTypeComboBox.Text}', '{this.gearBoxComboBox.Text}', '{this.engineTypeComboBox.Text}', '{EnumStatus.Dostępny}', '{this.costTextBox.Text}', '{this.VINTextBox.Text.ToUpper()}', '{this.LicensePlateNumberTextBox.Text.ToUpper()}')";
+                        $"VALUES('{this.categoryComboBox.Text}', '{this.manufacturerTextBox.Text.ToUpper()}', '{this.modelTextBox.Text.ToUpper()}', '{this.productionYearDateTimePicker.Value.ToString("yyyy-MM-dd")}', '{this.driveTypeComboBox.Text}', '{this.gearBoxComboBox.Text}', '{this.engineTypeComboBox.Text}', '{EnumStatus.Dostępny}', '{this.costTextBox.Text}', '{this.VINTextBox.Text.ToUpper()}', '{this.licensePlateNumberTextBox.Text.ToUpper()}')";
                     query.ExecuteNonQuery();
                     sqlConnection.Close();
 
@@ -107,130 +107,118 @@ namespace Wypozyczalnia
             Boolean valid = true;
             String errorMsg = "";
 
-            if (String.Empty.Equals(this.categoryComboBox.Text))
+            /*
+             * walidacja klasy samochodu
+             */
+            if (String.IsNullOrWhiteSpace(this.categoryComboBox.Text))
             {
                 valid = false;
                 errorMsg += "Klasa samochodu nie może zostać pusta!\n";
             }
-            if (String.Empty.Equals(this.manufacturerTextBox.Text))
+
+            /*
+             * walidacja marki
+             */
+            if (String.IsNullOrWhiteSpace(this.manufacturerTextBox.Text))
             {
                 valid = false;
                 errorMsg += "Marka samochodu nie może zostać pusta!\n";
             }
-            if (String.Empty.Equals(this.modelTextBox.Text))
+
+            /*
+             * walidacja modelu
+             */
+            if (String.IsNullOrWhiteSpace(this.modelTextBox.Text))
             {
                 valid = false;
                 errorMsg += "Model samochodu nie może zostać pusty!\n";
             }
-            if (String.Empty.Equals(this.driveTypeComboBox.Text))
+
+            /*
+             * walidacja rodzaju napędu
+             */
+            if (String.IsNullOrWhiteSpace(this.driveTypeComboBox.Text))
             {
                 valid = false;
                 errorMsg += "Rodzaj napędu nie może zostać pusty!\n";
             }
-            if (String.Empty.Equals(this.gearBoxComboBox.Text))
+
+            /*
+             * walidacja skrzyni biegów
+             */
+            if (String.IsNullOrWhiteSpace(this.gearBoxComboBox.Text))
             {
                 valid = false;
                 errorMsg += "Skrzynia biegów nie może zostać pusta!\n";
             }
-            if (String.Empty.Equals(this.productionYearDateTimePicker.Text))
+
+            /*
+             * walidacja daty produkcji
+             */
+            if (String.IsNullOrWhiteSpace(this.productionYearDateTimePicker.Text))
             {
                 valid = false;
                 errorMsg += "Data produkcji nie może zostać pusta!\n";
             }
-            if (String.Empty.Equals(this.engineTypeComboBox.Text))
+
+            /*
+             * walidacja rodzaju silnika
+             */
+            if (String.IsNullOrWhiteSpace(this.engineTypeComboBox.Text))
             {
                 valid = false;
                 errorMsg += "Silnik nie może zostać pusty!\n";
             }
-            if (String.Empty.Equals(this.costTextBox.Text))
+
+            /*
+             * walidacja kosztu wynajęcia
+             */
+            if (String.IsNullOrWhiteSpace(this.costTextBox.Text))
             {
                 valid = false;
                 errorMsg += "Koszt wynajęcia samochodu nie może zostać pusty!\n";
             }
-            if (String.Empty.Equals(this.VINTextBox.Text))
+
+            /*
+             * walidacja VIN
+             */
+            if (String.IsNullOrWhiteSpace(this.VINTextBox.Text))
             {
                 valid = false;
                 errorMsg += "Numer VIN samochodu nie może zostać pusty!\n";
             }
-            else if (this.VINTextBox.Text.Trim().Length != 17)
+            else if (Helpers.ValidateVINNumber(this.VINTextBox.Text.Trim()).Keys.Contains(false))
             {
                 valid = false;
-                errorMsg += $"Wprowadzony numer VIN samochodu jest nieprawiłowy! ({this.VINTextBox.Text.Trim().Length} znaków zamiast 17)\n";
+                errorMsg += Helpers.ValidateVINNumber(this.VINTextBox.Text.Trim())[false];
             }
-            else if (this.VINTextBox.Text.Contains("I") || this.VINTextBox.Text.Contains("O") || this.VINTextBox.Text.Contains("Q"))
-            {
-                valid = false;
-                errorMsg += $"Wprowadzony numer VIN samochodu jest nieprawiłowy! (Numer VIN nie może zawierać liter I, O i Q!\n";
-            }
-            else if (this.IsVINPresent(this.VINTextBox.Text))
+            else if (Helpers.IsVINPresent(this.VINTextBox.Text.Trim()))
             {
                 valid = false;
                 errorMsg += $"Wprowadzony numer VIN już istnieje w bazie!";
             }
-            if (String.Empty.Equals(this.LicensePlateNumberTextBox.Text))
+
+            /*
+             * walidacja numeru rejestracyjnego
+             */
+            if (String.IsNullOrWhiteSpace(this.licensePlateNumberTextBox.Text))
             {
                 valid = false;
                 errorMsg += "Numer rejestracyjny samochodu nie może zostać pusty!";
             }
-            else if (this.LicensePlateNumberTextBox.Text.Trim().Length != 7)
+            else if (Helpers.ValidateLicensePlatenumber(this.licensePlateNumberTextBox.Text.Trim()).Keys.Contains(false))
             {
                 valid = false;
-                errorMsg += $"Wprowadzony numer rejestracyjny samochodu jest nieprawiłowy! ({this.LicensePlateNumberTextBox.Text.Trim().Length} znaków zamiast 7)";
+                errorMsg += Helpers.ValidateLicensePlatenumber(this.licensePlateNumberTextBox.Text.Trim())[false];
             }
-            else if (!Char.IsLetter(this.LicensePlateNumberTextBox.Text.ToCharArray()[0]) || !Char.IsLetter(this.LicensePlateNumberTextBox.Text.ToCharArray()[1]))
-            {
-                valid = false;
-                errorMsg += $"Wprowadzony numer rejestracyjny samochodu jest nieprawiłowy! (Co najmniej 2 pierwsze znaki muszą być literami)";
-            }
-            else if (this.IsLicensePlateNumberPresent(this.LicensePlateNumberTextBox.Text))
+            else if (Helpers.IsLicensePlateNumberPresent(this.licensePlateNumberTextBox.Text.Trim()))
             {
                 valid = false;
                 errorMsg += $"Wprowadzony numer rejestracyjny samochodu już istnieje w bazie!";
             }
 
             validationResult.Add(valid, errorMsg);
-
             return validationResult;
-        }
-
-        private Boolean IsVINPresent(string VIN)
-        {
-            Boolean exists = false;
-
-            SqlConnection sqlConnection = new SqlConnection(@"Data source=DESKTOP-ESRM8PV;
-                                                                database=Wypozyczalnia;
-                                                                User id=admin;
-                                                                Password=admin;");
-            sqlConnection.Open();
-            SqlCommand query = sqlConnection.CreateCommand();
-            query.CommandText = $"select * from samochody where VIN = '{VIN}'";
-            SqlDataReader dataReader = query.ExecuteReader();
-            if (dataReader.HasRows)
-            {
-                exists = true;
-            }
-
-            return exists;
-        }
-
-        private Boolean IsLicensePlateNumberPresent(string licPlateNum)
-        {
-            Boolean exists = false;
-
-            SqlConnection sqlConnection = new SqlConnection(@"Data source=DESKTOP-ESRM8PV;
-                                                                database=Wypozyczalnia;
-                                                                User id=admin;
-                                                                Password=admin;");
-            sqlConnection.Open();
-            SqlCommand query = sqlConnection.CreateCommand();
-            query.CommandText = $"select * from samochody where [Numer rejestracyjny] = '{licPlateNum}'";
-            SqlDataReader dataReader = query.ExecuteReader();
-            if (dataReader.HasRows)
-            {
-                exists = true;
-            }
-
-            return exists;
         }
     }
 }

@@ -238,6 +238,7 @@
             // 
             // categoryComboBox
             // 
+            this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoryComboBox.FormattingEnabled = true;
             this.categoryComboBox.Location = new System.Drawing.Point(98, 64);
             this.categoryComboBox.Name = "categoryComboBox";
@@ -246,6 +247,7 @@
             // 
             // driveTypeComboBox
             // 
+            this.driveTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.driveTypeComboBox.FormattingEnabled = true;
             this.driveTypeComboBox.Location = new System.Drawing.Point(98, 154);
             this.driveTypeComboBox.Name = "driveTypeComboBox";
@@ -254,6 +256,7 @@
             // 
             // gearboxComboBox
             // 
+            this.gearboxComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.gearboxComboBox.FormattingEnabled = true;
             this.gearboxComboBox.Location = new System.Drawing.Point(98, 184);
             this.gearboxComboBox.Name = "gearboxComboBox";
@@ -262,6 +265,7 @@
             // 
             // engineComboBox
             // 
+            this.engineComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.engineComboBox.FormattingEnabled = true;
             this.engineComboBox.Location = new System.Drawing.Point(98, 244);
             this.engineComboBox.Name = "engineComboBox";
@@ -287,12 +291,14 @@
             // 
             // saveButton
             // 
+            this.saveButton.Enabled = false;
             this.saveButton.Location = new System.Drawing.Point(443, 380);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 32;
             this.saveButton.Text = "Zapisz";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // cancelButton
             // 
@@ -302,6 +308,7 @@
             this.cancelButton.TabIndex = 33;
             this.cancelButton.Text = "Anuluj";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // ModifyCarForm
             // 

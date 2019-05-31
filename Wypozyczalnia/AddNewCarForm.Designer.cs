@@ -47,13 +47,14 @@
             this.AddCarButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.VINTextBox = new System.Windows.Forms.TextBox();
-            this.LicensePlateNumberTextBox = new System.Windows.Forms.TextBox();
+            this.licensePlateNumberTextBox = new System.Windows.Forms.TextBox();
             this.VINLabel = new System.Windows.Forms.Label();
-            this.LicensePlateNumberLabel = new System.Windows.Forms.Label();
+            this.licensePlateNumberLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // categoryComboBox
             // 
+            this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoryComboBox.FormattingEnabled = true;
             this.categoryComboBox.Location = new System.Drawing.Point(108, 12);
             this.categoryComboBox.Name = "categoryComboBox";
@@ -71,6 +72,7 @@
             // 
             // driveTypeComboBox
             // 
+            this.driveTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.driveTypeComboBox.FormattingEnabled = true;
             this.driveTypeComboBox.Location = new System.Drawing.Point(108, 102);
             this.driveTypeComboBox.Name = "driveTypeComboBox";
@@ -79,6 +81,7 @@
             // 
             // gearBoxComboBox
             // 
+            this.gearBoxComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.gearBoxComboBox.FormattingEnabled = true;
             this.gearBoxComboBox.Location = new System.Drawing.Point(108, 132);
             this.gearBoxComboBox.Name = "gearBoxComboBox";
@@ -150,6 +153,7 @@
             // 
             // engineTypeComboBox
             // 
+            this.engineTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.engineTypeComboBox.FormattingEnabled = true;
             this.engineTypeComboBox.Location = new System.Drawing.Point(108, 192);
             this.engineTypeComboBox.Name = "engineTypeComboBox";
@@ -213,12 +217,12 @@
             this.VINTextBox.Size = new System.Drawing.Size(121, 20);
             this.VINTextBox.TabIndex = 20;
             // 
-            // LicensePlateNumberTextBox
+            // licensePlateNumberTextBox
             // 
-            this.LicensePlateNumberTextBox.Location = new System.Drawing.Point(108, 282);
-            this.LicensePlateNumberTextBox.Name = "LicensePlateNumberTextBox";
-            this.LicensePlateNumberTextBox.Size = new System.Drawing.Size(121, 20);
-            this.LicensePlateNumberTextBox.TabIndex = 21;
+            this.licensePlateNumberTextBox.Location = new System.Drawing.Point(108, 282);
+            this.licensePlateNumberTextBox.Name = "licensePlateNumberTextBox";
+            this.licensePlateNumberTextBox.Size = new System.Drawing.Size(121, 20);
+            this.licensePlateNumberTextBox.TabIndex = 21;
             // 
             // VINLabel
             // 
@@ -229,25 +233,24 @@
             this.VINLabel.TabIndex = 22;
             this.VINLabel.Text = "VIN";
             // 
-            // LicensePlateNumberLabel
+            // licensePlateNumberLabel
             // 
-            this.LicensePlateNumberLabel.AutoSize = true;
-            this.LicensePlateNumberLabel.Location = new System.Drawing.Point(11, 290);
-            this.LicensePlateNumberLabel.Name = "LicensePlateNumberLabel";
-            this.LicensePlateNumberLabel.Size = new System.Drawing.Size(79, 13);
-            this.LicensePlateNumberLabel.TabIndex = 23;
-            this.LicensePlateNumberLabel.Text = "Nr rejestracyjny";
+            this.licensePlateNumberLabel.AutoSize = true;
+            this.licensePlateNumberLabel.Location = new System.Drawing.Point(11, 290);
+            this.licensePlateNumberLabel.Name = "licensePlateNumberLabel";
+            this.licensePlateNumberLabel.Size = new System.Drawing.Size(79, 13);
+            this.licensePlateNumberLabel.TabIndex = 23;
+            this.licensePlateNumberLabel.Text = "Nr rejestracyjny";
             // 
             // AddNewCarForm
             // 
             this.AcceptButton = this.AddCarButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CancelButton;
             this.ClientSize = new System.Drawing.Size(254, 361);
-            this.Controls.Add(this.LicensePlateNumberLabel);
+            this.Controls.Add(this.licensePlateNumberLabel);
             this.Controls.Add(this.VINLabel);
-            this.Controls.Add(this.LicensePlateNumberTextBox);
+            this.Controls.Add(this.licensePlateNumberTextBox);
             this.Controls.Add(this.VINTextBox);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.AddCarButton);
@@ -300,8 +303,8 @@
         private System.Windows.Forms.Button AddCarButton;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.TextBox VINTextBox;
-        private System.Windows.Forms.TextBox LicensePlateNumberTextBox;
+        private System.Windows.Forms.TextBox licensePlateNumberTextBox;
         private System.Windows.Forms.Label VINLabel;
-        private System.Windows.Forms.Label LicensePlateNumberLabel;
+        private System.Windows.Forms.Label licensePlateNumberLabel;
     }
 }
