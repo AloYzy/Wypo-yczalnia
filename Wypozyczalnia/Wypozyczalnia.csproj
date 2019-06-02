@@ -81,14 +81,23 @@
     <Compile Include="MainWindowForm.Designer.cs">
       <DependentUpon>MainWindowForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\LoginCredentials.cs" />
+    <Compile Include="Models\Modification.cs" />
     <Compile Include="ModifyCarForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModifyCarForm.Designer.cs">
       <DependentUpon>ModifyCarForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presenters\AddCarPresenter.cs" />
+    <Compile Include="Presenters\LoginPresenter.cs" />
+    <Compile Include="Presenters\ModifyCarPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\IAddCar.cs" />
+    <Compile Include="Views\ILogin.cs" />
+    <Compile Include="Views\IModifyCar.cs" />
     <Compile Include="WypozyczalniaDataSet.cs">
       <DependentUpon>WypozyczalniaDataSet.xsd</DependentUpon>
     </Compile>
@@ -157,5 +166,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,49 +8,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wypozyczalnia.Presenters;
+using Wypozyczalnia.Views;
 
 namespace Wypozyczalnia
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : Form, ILogin
     {
         public LoginForm()
         {
             InitializeComponent();
         }
 
+        public string LoginText
+        {
+            get
+            {
+                return loginTextBox.Text;
+            }
+            set
+            {
+                loginTextBox.Text = value;
+            }
+        }
+
+        public string PasswordText
+        {
+            get
+            {
+                return passwordTextBox.Text;
+            }
+            set
+            {
+                passwordTextBox.Text = value;
+            }
+        }
+
+        public bool LogedIn { get; set; }
+
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            string login = this.loginTextBox.Text;
-            string password = this.passwordTextBox.Text;
+            LoginPresenter presenter = new LoginPresenter(this);
+            presenter.LogIn();
 
-            try
+            if (LogedIn)
             {
-                SqlConnection sqlConnection = new SqlConnection(@"Data source=DESKTOP-ESRM8PV;
-                                                                database=Wypozyczalnia;
-                                                                User id=admin;
-                                                                Password=admin;");
-                sqlConnection.Open();
-                SqlCommand query = sqlConnection.CreateCommand();
-                query.CommandText = $"select * from pracownicy where login = '{login}' and haslo = '{password}'";
-                SqlDataReader dataReader = query.ExecuteReader();
-                if (dataReader.HasRows)
-                {
-                    this.Hide();
-                    Form mainWindow = new MainWindowForm();
-                    mainWindow.ShowDialog();
-                }
-                else
-                {
-                    Console.WriteLine("Błędny login lub hasło.");
-                }
-                
-                dataReader.Close();
-                sqlConnection.Close();
-            }
-            catch (Exception exp)
-            {
-                Console.WriteLine("Wystąpił nieoczekiwany błąd!");
-                Console.WriteLine(exp.Message);
+                this.Close();
             }
         }
     }

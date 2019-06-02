@@ -31,7 +31,7 @@
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.categoryLabel = new System.Windows.Forms.Label();
             this.driveTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.gearBoxComboBox = new System.Windows.Forms.ComboBox();
+            this.gearboxComboBox = new System.Windows.Forms.ComboBox();
             this.driveTypeLabel = new System.Windows.Forms.Label();
             this.gearBoxLabel = new System.Windows.Forms.Label();
             this.manufacturerLabel = new System.Windows.Forms.Label();
@@ -79,14 +79,14 @@
             this.driveTypeComboBox.Size = new System.Drawing.Size(121, 21);
             this.driveTypeComboBox.TabIndex = 2;
             // 
-            // gearBoxComboBox
+            // gearboxComboBox
             // 
-            this.gearBoxComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.gearBoxComboBox.FormattingEnabled = true;
-            this.gearBoxComboBox.Location = new System.Drawing.Point(108, 132);
-            this.gearBoxComboBox.Name = "gearBoxComboBox";
-            this.gearBoxComboBox.Size = new System.Drawing.Size(121, 21);
-            this.gearBoxComboBox.TabIndex = 3;
+            this.gearboxComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.gearboxComboBox.FormattingEnabled = true;
+            this.gearboxComboBox.Location = new System.Drawing.Point(108, 132);
+            this.gearboxComboBox.Name = "gearboxComboBox";
+            this.gearboxComboBox.Size = new System.Drawing.Size(121, 21);
+            this.gearboxComboBox.TabIndex = 3;
             // 
             // driveTypeLabel
             // 
@@ -266,7 +266,7 @@
             this.Controls.Add(this.manufacturerLabel);
             this.Controls.Add(this.gearBoxLabel);
             this.Controls.Add(this.driveTypeLabel);
-            this.Controls.Add(this.gearBoxComboBox);
+            this.Controls.Add(this.gearboxComboBox);
             this.Controls.Add(this.driveTypeComboBox);
             this.Controls.Add(this.categoryLabel);
             this.Controls.Add(this.categoryComboBox);
@@ -287,7 +287,7 @@
         private System.Windows.Forms.ComboBox categoryComboBox;
         private System.Windows.Forms.Label categoryLabel;
         private System.Windows.Forms.ComboBox driveTypeComboBox;
-        private System.Windows.Forms.ComboBox gearBoxComboBox;
+        private System.Windows.Forms.ComboBox gearboxComboBox;
         private System.Windows.Forms.Label driveTypeLabel;
         private System.Windows.Forms.Label gearBoxLabel;
         private System.Windows.Forms.Label manufacturerLabel;

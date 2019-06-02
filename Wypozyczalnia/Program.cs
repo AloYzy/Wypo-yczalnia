@@ -9,6 +9,8 @@ namespace Wypozyczalnia
 {
     static class Program
     {
+
+        private static LoginForm loginForm = null;
         /// <summary>
         /// Główny punkt wejścia dla aplikacji.
         /// </summary>
@@ -17,7 +19,14 @@ namespace Wypozyczalnia
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+
+            loginForm = new LoginForm();
+            Application.Run(loginForm);
+            if (loginForm.LogedIn)
+            {
+                Application.Run(new MainWindowForm());
+            }
+            
         }
     }
 }
