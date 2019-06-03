@@ -560,5 +560,117 @@ namespace Wypozyczalnia.Models
 
             return exists;
         }
+
+        public static DataTable getAllCategories()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = Helpers.connectionString;
+                sqlConnection.Open();
+
+                var sqlDataAdaper = new SqlDataAdapter($"SELECT DISTINCT klasa FROM samochody ORDER BY klasa ASC", sqlConnection);
+                sqlDataAdaper.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        public static DataTable getAllDriveTypes()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = Helpers.connectionString;
+                sqlConnection.Open();
+
+                var sqlDataAdaper = new SqlDataAdapter($"SELECT DISTINCT [Rodzaj napędu] FROM samochody ORDER BY [Rodzaj napędu] ASC", sqlConnection);
+                sqlDataAdaper.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        public static DataTable getAllEngines()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = Helpers.connectionString;
+                sqlConnection.Open();
+
+                var sqlDataAdaper = new SqlDataAdapter($"SELECT DISTINCT Silnik FROM samochody ORDER BY Silnik ASC", sqlConnection);
+                sqlDataAdaper.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        public static DataTable getAllManufacturers()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = Helpers.connectionString;
+                sqlConnection.Open();
+
+                var sqlDataAdaper = new SqlDataAdapter($"SELECT DISTINCT Marka FROM samochody ORDER BY Marka ASC", sqlConnection);
+                sqlDataAdaper.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        public static DataTable getAllModels()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = Helpers.connectionString;
+                sqlConnection.Open();
+
+                var sqlDataAdaper = new SqlDataAdapter($"SELECT DISTINCT Model FROM samochody ORDER BY Model ASC", sqlConnection);
+                sqlDataAdaper.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        public static DataTable SearchAllAvailableCars()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = Helpers.connectionString;
+                sqlConnection.Open();
+
+                var sqlDataAdaper = new SqlDataAdapter($"SELECT * FROM samochody WHERE status = '{EnumStatus.Dostępny}'", sqlConnection);
+                sqlDataAdaper.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        public static DataTable SearchAllCars()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = Helpers.connectionString;
+                sqlConnection.Open();
+
+                var sqlDataAdaper = new SqlDataAdapter($"SELECT * FROM samochody", sqlConnection);
+                sqlDataAdaper.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
     }
 }

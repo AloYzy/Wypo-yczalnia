@@ -61,33 +61,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddNewCarForm.cs">
+    <Compile Include="Presenters\SearchCarPresenter.cs" />
+    <Compile Include="Views\AddNewCarForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddNewCarForm.Designer.cs">
+    <Compile Include="Views\AddNewCarForm.Designer.cs">
       <DependentUpon>AddNewCarForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Enums.cs" />
     <Compile Include="Helpers.cs" />
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Views\IShowCars.cs" />
+    <Compile Include="Views\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Views\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainWindowForm.cs">
+    <Compile Include="Views\MainWindowForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindowForm.Designer.cs">
+    <Compile Include="Views\MainWindowForm.Designer.cs">
       <DependentUpon>MainWindowForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\LoginCredentials.cs" />
     <Compile Include="Models\Modification.cs" />
-    <Compile Include="ModifyCarForm.cs">
+    <Compile Include="Views\ModifyCarForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModifyCarForm.Designer.cs">
+    <Compile Include="Views\ModifyCarForm.Designer.cs">
       <DependentUpon>ModifyCarForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presenters\AddCarPresenter.cs" />
@@ -106,16 +107,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WypozyczalniaDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddNewCarForm.resx">
+    <EmbeddedResource Include="Views\AddNewCarForm.resx">
       <DependentUpon>AddNewCarForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Views\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainWindowForm.resx">
+    <EmbeddedResource Include="Views\MainWindowForm.resx">
       <DependentUpon>MainWindowForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModifyCarForm.resx">
+    <EmbeddedResource Include="Views\ModifyCarForm.resx">
       <DependentUpon>ModifyCarForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -35,6 +35,8 @@
             this.wypozyczSamochodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.odbierzSamochodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajSamochodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.edytujSamochodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usunSamochodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.terminarzToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,9 +52,9 @@
             this.productionYearGroupBox = new System.Windows.Forms.GroupBox();
             this.prodYearFromLabel = new System.Windows.Forms.Label();
             this.prodYearToLabel = new System.Windows.Forms.Label();
-            this.productionYearFromTextBox = new System.Windows.Forms.TextBox();
-            this.productionYearToTextBox = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.productionDateFrom = new System.Windows.Forms.DateTimePicker();
+            this.productionDateTo = new System.Windows.Forms.DateTimePicker();
+            this.searchedAvailableCarsDataGridView = new System.Windows.Forms.DataGridView();
             this.searchButton = new System.Windows.Forms.Button();
             this.categoryCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.categoryLabel = new System.Windows.Forms.Label();
@@ -73,8 +75,6 @@
             this.gearboxRadioButton2 = new System.Windows.Forms.RadioButton();
             this.gearboxRadioButton1 = new System.Windows.Forms.RadioButton();
             this.samochodyTableAdapter = new Wypozyczalnia.WypozyczalniaDataSetTableAdapters.SamochodyTableAdapter();
-            this.edytujSamochodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usunSamochodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.showCarsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.allCarsDataGridView)).BeginInit();
@@ -86,7 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.availableCarsDataGridView)).BeginInit();
             this.advancedSearchTabPage.SuspendLayout();
             this.productionYearGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchedAvailableCarsDataGridView)).BeginInit();
             this.costGroupBox.SuspendLayout();
             this.gearboxGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -122,14 +122,14 @@
             this.pokazSamochodyToolStripMenuItem1.Name = "pokazSamochodyToolStripMenuItem1";
             this.pokazSamochodyToolStripMenuItem1.Size = new System.Drawing.Size(186, 22);
             this.pokazSamochodyToolStripMenuItem1.Text = "Pokaż samochody";
-            this.pokazSamochodyToolStripMenuItem1.Click += new System.EventHandler(this.pokazSamochodyToolStripMenuItem1_Click);
+            this.pokazSamochodyToolStripMenuItem1.Click += new System.EventHandler(this.PokazSamochodyToolStripMenuItem_Click);
             // 
             // wypozyczSamochodToolStripMenuItem
             // 
             this.wypozyczSamochodToolStripMenuItem.Name = "wypozyczSamochodToolStripMenuItem";
             this.wypozyczSamochodToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.wypozyczSamochodToolStripMenuItem.Text = "Wypożycz samochód";
-            this.wypozyczSamochodToolStripMenuItem.Click += new System.EventHandler(this.wypozyczSamochodToolStripMenuItem_Click);
+            this.wypozyczSamochodToolStripMenuItem.Click += new System.EventHandler(this.WypozyczSamochodToolStripMenuItem_Click);
             // 
             // odbierzSamochodToolStripMenuItem
             // 
@@ -142,7 +142,20 @@
             this.dodajSamochodToolStripMenuItem.Name = "dodajSamochodToolStripMenuItem";
             this.dodajSamochodToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.dodajSamochodToolStripMenuItem.Text = "Dodaj samochód";
-            this.dodajSamochodToolStripMenuItem.Click += new System.EventHandler(this.dodajSamochodToolStripMenuItem_Click);
+            this.dodajSamochodToolStripMenuItem.Click += new System.EventHandler(this.DodajSamochodToolStripMenuItem_Click);
+            // 
+            // edytujSamochodToolStripMenuItem
+            // 
+            this.edytujSamochodToolStripMenuItem.Name = "edytujSamochodToolStripMenuItem";
+            this.edytujSamochodToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.edytujSamochodToolStripMenuItem.Text = "Edytuj samochód";
+            this.edytujSamochodToolStripMenuItem.Click += new System.EventHandler(this.EdytujSamochodToolStripMenuItem_Click);
+            // 
+            // usunSamochodToolStripMenuItem
+            // 
+            this.usunSamochodToolStripMenuItem.Name = "usunSamochodToolStripMenuItem";
+            this.usunSamochodToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.usunSamochodToolStripMenuItem.Text = "Usuń samochód";
             // 
             // terminarzToolStripMenuItem
             // 
@@ -241,7 +254,7 @@
             // advancedSearchTabPage
             // 
             this.advancedSearchTabPage.Controls.Add(this.productionYearGroupBox);
-            this.advancedSearchTabPage.Controls.Add(this.dataGridView1);
+            this.advancedSearchTabPage.Controls.Add(this.searchedAvailableCarsDataGridView);
             this.advancedSearchTabPage.Controls.Add(this.searchButton);
             this.advancedSearchTabPage.Controls.Add(this.categoryCheckedListBox);
             this.advancedSearchTabPage.Controls.Add(this.categoryLabel);
@@ -262,14 +275,13 @@
             this.advancedSearchTabPage.TabIndex = 1;
             this.advancedSearchTabPage.Text = "Wyszukiwanie szczegółowe";
             this.advancedSearchTabPage.UseVisualStyleBackColor = true;
-            this.advancedSearchTabPage.Click += new System.EventHandler(this.advancedSearchTabPage_Click);
             // 
             // productionYearGroupBox
             // 
             this.productionYearGroupBox.Controls.Add(this.prodYearFromLabel);
             this.productionYearGroupBox.Controls.Add(this.prodYearToLabel);
-            this.productionYearGroupBox.Controls.Add(this.productionYearFromTextBox);
-            this.productionYearGroupBox.Controls.Add(this.productionYearToTextBox);
+            this.productionYearGroupBox.Controls.Add(this.productionDateFrom);
+            this.productionYearGroupBox.Controls.Add(this.productionDateTo);
             this.productionYearGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.productionYearGroupBox.Location = new System.Drawing.Point(17, 97);
             this.productionYearGroupBox.Name = "productionYearGroupBox";
@@ -298,31 +310,33 @@
             this.prodYearToLabel.Text = "do";
             this.prodYearToLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // productionYearFromTextBox
+            // productionDateFrom
             // 
-            this.productionYearFromTextBox.Location = new System.Drawing.Point(31, 22);
-            this.productionYearFromTextBox.Name = "productionYearFromTextBox";
-            this.productionYearFromTextBox.Size = new System.Drawing.Size(113, 20);
-            this.productionYearFromTextBox.TabIndex = 2;
+            this.productionDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.productionDateFrom.Location = new System.Drawing.Point(31, 22);
+            this.productionDateFrom.Name = "productionDateFrom";
+            this.productionDateFrom.Size = new System.Drawing.Size(113, 20);
+            this.productionDateFrom.TabIndex = 2;
             // 
-            // productionYearToTextBox
+            // productionDateTo
             // 
-            this.productionYearToTextBox.Location = new System.Drawing.Point(31, 48);
-            this.productionYearToTextBox.Name = "productionYearToTextBox";
-            this.productionYearToTextBox.Size = new System.Drawing.Size(113, 20);
-            this.productionYearToTextBox.TabIndex = 3;
+            this.productionDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.productionDateTo.Location = new System.Drawing.Point(31, 48);
+            this.productionDateTo.Name = "productionDateTo";
+            this.productionDateTo.Size = new System.Drawing.Size(113, 20);
+            this.productionDateTo.TabIndex = 3;
             // 
-            // dataGridView1
+            // searchedAvailableCarsDataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 183);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1005, 336);
-            this.dataGridView1.TabIndex = 0;
+            this.searchedAvailableCarsDataGridView.AllowUserToAddRows = false;
+            this.searchedAvailableCarsDataGridView.AllowUserToDeleteRows = false;
+            this.searchedAvailableCarsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.searchedAvailableCarsDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.searchedAvailableCarsDataGridView.Location = new System.Drawing.Point(3, 183);
+            this.searchedAvailableCarsDataGridView.Name = "searchedAvailableCarsDataGridView";
+            this.searchedAvailableCarsDataGridView.ReadOnly = true;
+            this.searchedAvailableCarsDataGridView.Size = new System.Drawing.Size(1005, 336);
+            this.searchedAvailableCarsDataGridView.TabIndex = 0;
             // 
             // searchButton
             // 
@@ -352,7 +366,6 @@
             this.categoryLabel.Size = new System.Drawing.Size(33, 13);
             this.categoryLabel.TabIndex = 1;
             this.categoryLabel.Text = "Klasa";
-            this.categoryLabel.Click += new System.EventHandler(this.categoryLabel_Click);
             // 
             // modelLabel
             // 
@@ -514,19 +527,6 @@
             // 
             this.samochodyTableAdapter.ClearBeforeFill = true;
             // 
-            // edytujSamochodToolStripMenuItem
-            // 
-            this.edytujSamochodToolStripMenuItem.Name = "edytujSamochodToolStripMenuItem";
-            this.edytujSamochodToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.edytujSamochodToolStripMenuItem.Text = "Edytuj samochód";
-            this.edytujSamochodToolStripMenuItem.Click += new System.EventHandler(this.EdytujSamochodToolStripMenuItem_Click);
-            // 
-            // usunSamochodToolStripMenuItem
-            // 
-            this.usunSamochodToolStripMenuItem.Name = "usunSamochodToolStripMenuItem";
-            this.usunSamochodToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.usunSamochodToolStripMenuItem.Text = "Usuń samochód";
-            // 
             // MainWindowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -555,7 +555,7 @@
             this.advancedSearchTabPage.PerformLayout();
             this.productionYearGroupBox.ResumeLayout(false);
             this.productionYearGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchedAvailableCarsDataGridView)).EndInit();
             this.costGroupBox.ResumeLayout(false);
             this.costGroupBox.PerformLayout();
             this.gearboxGroupBox.ResumeLayout(false);
@@ -588,9 +588,9 @@
         private System.Windows.Forms.GroupBox productionYearGroupBox;
         private System.Windows.Forms.Label prodYearFromLabel;
         private System.Windows.Forms.Label prodYearToLabel;
-        private System.Windows.Forms.TextBox productionYearFromTextBox;
-        private System.Windows.Forms.TextBox productionYearToTextBox;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DateTimePicker productionDateFrom;
+        private System.Windows.Forms.DateTimePicker productionDateTo;
+        private System.Windows.Forms.DataGridView searchedAvailableCarsDataGridView;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.CheckedListBox categoryCheckedListBox;
         private System.Windows.Forms.Label categoryLabel;
