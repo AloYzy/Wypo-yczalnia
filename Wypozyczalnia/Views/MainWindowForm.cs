@@ -25,7 +25,7 @@ namespace Wypozyczalnia
 
         public CheckedListBox.CheckedItemCollection EngineText => engineCheckedListBox.CheckedItems;
 
-        public string GearboxText => gearboxRadioButton1.Checked ? gearboxRadioButton1.Text : (gearboxRadioButton2.Checked ? gearboxRadioButton2.Text : string.Empty);
+        public string GearboxText => gearboxRadioButton1.Checked ? gearboxRadioButton1.Text : (gearboxRadioButton2.Checked ? gearboxRadioButton2.Text : ($"('{gearboxRadioButton1.Text}', '{gearboxRadioButton2.Text}')"));
 
         public CheckedListBox.CheckedItemCollection ManufacturerText => manufacturerCheckedListBox.CheckedItems;
 
@@ -132,6 +132,12 @@ namespace Wypozyczalnia
         {
             Form modifyCarForm = new ModifyCarForm();
             modifyCarForm.ShowDialog();
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            SearchCarPresenter searchCarPresenter = new SearchCarPresenter(this);
+            searchCarPresenter.SearchAvailableCarsByCriteria(CategoryText, ManufacturerText, ModelText, DriveTypeText, EngineText, ProductionDateFrom, ProductionDateTo, CostTextFrom, CostTextTo, GearboxText);
         }
     }
 }

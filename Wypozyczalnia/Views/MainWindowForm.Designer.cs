@@ -317,6 +317,7 @@
             this.productionDateFrom.Name = "productionDateFrom";
             this.productionDateFrom.Size = new System.Drawing.Size(113, 20);
             this.productionDateFrom.TabIndex = 2;
+            this.productionDateFrom.Value = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
             // 
             // productionDateTo
             // 
@@ -341,13 +342,14 @@
             // searchButton
             // 
             this.searchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchButton.Cursor = System.Windows.Forms.Cursors.Default;
             this.searchButton.Location = new System.Drawing.Point(917, 143);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(75, 25);
             this.searchButton.TabIndex = 9;
             this.searchButton.Text = "Wyszukaj";
             this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.UseWaitCursor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // categoryCheckedListBox
             // 

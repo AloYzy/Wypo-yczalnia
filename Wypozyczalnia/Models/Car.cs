@@ -184,6 +184,47 @@ namespace Wypozyczalnia.Models
             return success;
         }
 
+        public static DataTable SearchAvailableCarsByCriteria(string categoryCriteria, string manufacturerCriteria, string modelCriteria, string driveTypeCriteria, string engineCriteria, DateTime productionDateFrom, DateTime productionDateTo, decimal costFromCriteria, decimal costToCriteria, string gearboxText)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = Helpers.connectionString;
+                sqlConnection.Open();
+
+                var sqlDataAdaper = new SqlDataAdapter($"SELECT * FROM samochody WHERE " +
+                    $"klasa in ({categoryCriteria}) AND marka in ({manufacturerCriteria}) AND model in ({modelCriteria}) AND [rodzaj napędu] in ({driveTypeCriteria}) " +
+                    $"AND silnik in ({engineCriteria}) AND ([rok produkcji] >= '{productionDateFrom}' AND [rok produkcji] <= '{productionDateTo}' AND ([koszt wynajęcia] BETWEEN {costFromCriteria.ToString().Replace(',', '.')} AND {costToCriteria.ToString().Replace(',', '.')}) AND [skrzynia biegów] in {gearboxText}) ORDER BY id ASC", sqlConnection);
+                sqlDataAdaper.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        public static decimal getMaxCost()
+        {
+
+            decimal maxCost = decimal.MaxValue;
+
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = Helpers.connectionString;
+                sqlConnection.Open();
+
+                DataTable dataTable = new DataTable();
+                var sqlDataAdaper = new SqlDataAdapter($"SELECT TOP 1 [koszt wynajęcia] FROM samochody ORDER BY [koszt wynajęcia] DESC", sqlConnection);
+                sqlDataAdaper.Fill(dataTable);
+
+                if (dataTable.Rows.Count > 0)
+                {
+                    maxCost = dataTable.Rows[0].Field<decimal>("Koszt wynajęcia");
+                }
+            }
+
+            return maxCost;
+        }
+
         public bool AddNewCar()
         {
             bool success = false;
