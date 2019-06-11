@@ -249,7 +249,7 @@
             this.availableCarsDataGridView.ReadOnly = true;
             this.availableCarsDataGridView.Size = new System.Drawing.Size(1005, 516);
             this.availableCarsDataGridView.TabIndex = 0;
-            this.availableCarsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.availableCarsDataGridView_CellContentClick);
+            this.availableCarsDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.availableCarsDataGridView_CellContentDoubleClick);
             // 
             // advancedSearchTabPage
             // 
@@ -338,6 +338,7 @@
             this.searchedAvailableCarsDataGridView.ReadOnly = true;
             this.searchedAvailableCarsDataGridView.Size = new System.Drawing.Size(1005, 336);
             this.searchedAvailableCarsDataGridView.TabIndex = 0;
+            this.searchedAvailableCarsDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.searchedAvailableCarsDataGridView_CellContentDoubleClick);
             // 
             // searchButton
             // 

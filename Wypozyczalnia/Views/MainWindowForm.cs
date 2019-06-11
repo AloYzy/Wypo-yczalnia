@@ -117,9 +117,9 @@ namespace Wypozyczalnia
 
         }
 
-        private void availableCarsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void availableCarsDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            this.ShowRentCarForm(sender, e);
         }
 
         private void DodajSamochodToolStripMenuItem_Click(object sender, EventArgs e)
@@ -138,6 +138,18 @@ namespace Wypozyczalnia
         {
             SearchCarPresenter searchCarPresenter = new SearchCarPresenter(this);
             searchCarPresenter.SearchAvailableCarsByCriteria(CategoryText, ManufacturerText, ModelText, DriveTypeText, EngineText, ProductionDateFrom, ProductionDateTo, CostTextFrom, CostTextTo, GearboxText);
+        }
+
+        private void searchedAvailableCarsDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.ShowRentCarForm(sender, e);
+        }
+
+        private void ShowRentCarForm(object sender, DataGridViewCellEventArgs e)
+        {
+            Form rentCarForm = new RentForm(sender, e);
+            rentCarForm. ShowDialog();
+
         }
     }
 }
