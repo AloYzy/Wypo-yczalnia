@@ -113,7 +113,14 @@ namespace Wypozyczalnia.Presenters
             {
                 for (int i = 0; i < manufacturerText.Count; i++)
                 {
-                    manufacturerCriteria += "'" + manufacturerText[i].ToString().Trim() + "'" + ",";
+                    if (i == manufacturerText.Count - 1)
+                    {
+                        manufacturerCriteria += "'" + manufacturerText[i].ToString().Trim() + "'";
+                    }
+                    else
+                    {
+                        manufacturerCriteria += "'" + manufacturerText[i].ToString().Trim() + "'" + ",";
+                    }
                 }
             }
 
@@ -136,7 +143,14 @@ namespace Wypozyczalnia.Presenters
             {
                 for (int i = 0; i < modelText.Count; i++)
                 {
-                    modelCriteria += "'" + modelText[i].ToString().Trim() + "'" + ",";
+                    if (i == modelText.Count - 1)
+                    {
+                        modelCriteria += "'" + modelText[i].ToString().Trim() + "'";
+                    }
+                    else
+                    {
+                        modelCriteria += "'" + modelText[i].ToString().Trim() + "'" + ",";
+                    }
                 }
             }
 
@@ -159,7 +173,14 @@ namespace Wypozyczalnia.Presenters
             {
                 for (int i = 0; i < driveTypeText.Count; i++)
                 {
-                    driveTypeCriteria += "'" + driveTypeText[i].ToString().Trim() + "'" + ",";
+                    if (i == driveTypeText.Count - 1)
+                    {
+                        driveTypeCriteria += "'" + driveTypeText[i].ToString().Trim() + "'";
+                    }
+                    else
+                    {
+                        driveTypeCriteria += "'" + driveTypeText[i].ToString().Trim() + "'" + ",";
+                    }
                 }
             }
 
@@ -182,7 +203,14 @@ namespace Wypozyczalnia.Presenters
             {
                 for (int i = 0; i < engineText.Count; i++)
                 {
-                    engineCriteria += "'" + engineText[i].ToString().Trim() + "'" + ",";
+                    if (i == engineText.Count - 1)
+                    {
+                        engineCriteria += "'" + engineText[i].ToString().Trim() + "'";
+                    }
+                    else
+                    {
+                        engineCriteria += "'" + engineText[i].ToString().Trim() + "'" + ",";
+                    }
                 }
             }
 

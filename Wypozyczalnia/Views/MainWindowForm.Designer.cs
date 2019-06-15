@@ -37,9 +37,6 @@
             this.dodajSamochodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.edytujSamochodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usunSamochodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.terminarzToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showCarsPanel = new System.Windows.Forms.Panel();
             this.allCarsDataGridView = new System.Windows.Forms.DataGridView();
             this.samochodyBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -94,10 +91,7 @@
             // MainMenu
             // 
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.zarzadzajSamochodyToolStripMenuItem,
-            this.terminarzToolStripMenuItem,
-            this.wylogujToolStripMenuItem,
-            this.oProgramieToolStripMenuItem});
+            this.zarzadzajSamochodyToolStripMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.Size = new System.Drawing.Size(1019, 24);
@@ -157,24 +151,6 @@
             this.usunSamochodToolStripMenuItem.Name = "usunSamochodToolStripMenuItem";
             this.usunSamochodToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.usunSamochodToolStripMenuItem.Text = "Usuń samochód";
-            // 
-            // terminarzToolStripMenuItem
-            // 
-            this.terminarzToolStripMenuItem.Name = "terminarzToolStripMenuItem";
-            this.terminarzToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.terminarzToolStripMenuItem.Text = "Terminarz";
-            // 
-            // wylogujToolStripMenuItem
-            // 
-            this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.wylogujToolStripMenuItem.Text = "Wyloguj";
-            // 
-            // oProgramieToolStripMenuItem
-            // 
-            this.oProgramieToolStripMenuItem.Name = "oProgramieToolStripMenuItem";
-            this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
-            this.oProgramieToolStripMenuItem.Text = "O programie";
             // 
             // showCarsPanel
             // 
@@ -575,9 +551,6 @@
         private System.Windows.Forms.ToolStripMenuItem pokazSamochodyToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem wypozyczSamochodToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem odbierzSamochodToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem terminarzToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem oProgramieToolStripMenuItem;
         private System.Windows.Forms.Panel showCarsPanel;
         private System.Windows.Forms.DataGridView allCarsDataGridView;
         private WypozyczalniaDataSet wypozyczalniaDataSet;
