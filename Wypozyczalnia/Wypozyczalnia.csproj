@@ -64,6 +64,7 @@
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Rent.cs" />
     <Compile Include="Presenters\RentCarPresenter.cs" />
+    <Compile Include="Presenters\ReturnCarPresenter.cs" />
     <Compile Include="Presenters\SearchCarPresenter.cs" />
     <Compile Include="Views\AddNewCarForm.cs">
       <SubType>Form</SubType>
@@ -73,6 +74,7 @@
     </Compile>
     <Compile Include="Helpers.cs" />
     <Compile Include="Views\IRentCar.cs" />
+    <Compile Include="Views\IReturnCar.cs" />
     <Compile Include="Views\IShowCars.cs" />
     <Compile Include="Views\LoginForm.cs">
       <SubType>Form</SubType>
@@ -109,6 +111,12 @@
     <Compile Include="Views\RentForm.Designer.cs">
       <DependentUpon>RentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ReturnCarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ReturnCarForm.Designer.cs">
+      <DependentUpon>ReturnCarForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WypozyczalniaDataSet.cs">
       <DependentUpon>WypozyczalniaDataSet.xsd</DependentUpon>
     </Compile>
@@ -140,6 +148,9 @@
     </Compile>
     <EmbeddedResource Include="Views\RentForm.resx">
       <DependentUpon>RentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ReturnCarForm.resx">
+      <DependentUpon>ReturnCarForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

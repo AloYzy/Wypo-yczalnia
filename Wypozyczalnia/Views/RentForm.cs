@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wypozyczalnia.Models;
 using Wypozyczalnia.Presenters;
-using Wypozyczalnia.Views;
 
 namespace Wypozyczalnia.Views
 {
@@ -21,22 +21,39 @@ namespace Wypozyczalnia.Views
             this.CalculateTotalCost();
         }
 
-        public string ClientName => this.nameTextBox.Text;
+        public RentForm(Rent rent)
+        {
+            InitializeComponent();
+            RentCarPresenter rentCarPresenter = new RentCarPresenter(this);
+            rentCarPresenter.FillRentData(rent);
+            this.DisableControls();
+        }
 
-        public string ClientSurname => this.surnameTextBox.Text;
+        private void DisableControls()
+        {
+            this.nameTextBox.Enabled = false;
+            this.surnameTextBox.Enabled = false;
+            this.licenseTextBox.Enabled = false;
+            this.endDateTimePicker.Enabled = false;
+            this.startDateTimePicker.Enabled = false;
+        }
 
-        public string LicenseNumber => this.licenseTextBox.Text;
+        public string ClientName { get => this.nameTextBox.Text; set => this.nameTextBox.Text = value; }
+
+        public string ClientSurname { get => this.surnameTextBox.Text; set => this.surnameTextBox.Text = value; }
+
+        public string LicenseNumber { get => this.licenseTextBox.Text; set => this.licenseTextBox.Text = value; }
 
         public DateTime DateStart { get => this.startDateTimePicker.Value; set => this.startDateTimePicker.Value = value; }
 
         public DateTime DateEnd { get => this.endDateTimePicker.Value; set => this.endDateTimePicker.Value = value; }
 
-        public decimal TotalCost { set => totalCostLabel.Text = value.ToString(); }
+        public decimal TotalCost { get => decimal.Parse(this.totalCostLabel.Text); set => totalCostLabel.Text = value.ToString(); }
 
-        public string Manufacturer { get => throw new NotImplementedException(); set => this.manufacturerTextBox.Text = value; }
-        public string Model { get => throw new NotImplementedException(); set => this.modelTextBox.Text = value; }
-        public string Engine { get => throw new NotImplementedException(); set => this.engineTextBox.Text = value; }
-        public string LicensePlateNumber { get => throw new NotImplementedException(); set => this.licensePlateNumberTextBox.Text = value; }
+        public string Manufacturer { get => this.manufacturerTextBox.Text; set => this.manufacturerTextBox.Text = value; }
+        public string Model { get => this.modelTextBox.Text; set => this.modelTextBox.Text = value; }
+        public string Engine { get => this.engineTextBox.Text; set => this.engineTextBox.Text = value; }
+        public string LicensePlateNumber { get => this.licensePlateNumberTextBox.Text; set => this.licensePlateNumberTextBox.Text = value; }
         public string Cost { get => this.costTextBox.Text; set => this.costTextBox.Text = value; }
 
         private void FillData(object sender, DataGridViewCellEventArgs e)
@@ -102,8 +119,17 @@ namespace Wypozyczalnia.Views
             }
             else if (rentCarPresenter.ValidateClientData().Keys.Contains(true))
             {
-                rentCarPresenter.AddNewRent();
+                if (rentCarPresenter.AddNewRent())
+                {
+                    this.ShowSuccessInfo("Samochód został wypożyczony!");
+                    this.acceptRentButton.Enabled = false;
+                }
+                else
+                {
+                    this.ShowWarning("Coś poszło nie tak! Spróbuj ponownie.");
+                }
             }
         }
+
     }
 }

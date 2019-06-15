@@ -143,11 +143,11 @@
             // 
             this.endDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.endDateTimePicker.Location = new System.Drawing.Point(76, 49);
-            this.endDateTimePicker.MinDate = new System.DateTime(2019, 6, 12, 0, 0, 0, 0);
+            this.endDateTimePicker.MinDate = new System.DateTime(2019, 6, 14, 0, 0, 0, 0);
             this.endDateTimePicker.Name = "endDateTimePicker";
             this.endDateTimePicker.Size = new System.Drawing.Size(140, 20);
             this.endDateTimePicker.TabIndex = 3;
-            this.endDateTimePicker.Value = new System.DateTime(2019, 6, 12, 0, 0, 0, 0);
+            this.endDateTimePicker.Value = new System.DateTime(2019, 6, 14, 0, 0, 0, 0);
             this.endDateTimePicker.ValueChanged += new System.EventHandler(this.EndDateTimePicker_ValueChanged);
             // 
             // endLabel
@@ -163,7 +163,7 @@
             // 
             this.startDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.startDateTimePicker.Location = new System.Drawing.Point(76, 20);
-            this.startDateTimePicker.MinDate = new System.DateTime(2019, 6, 11, 0, 0, 0, 0);
+            this.startDateTimePicker.MinDate = new System.DateTime(2019, 6, 13, 0, 0, 0, 0);
             this.startDateTimePicker.Name = "startDateTimePicker";
             this.startDateTimePicker.Size = new System.Drawing.Size(140, 20);
             this.startDateTimePicker.TabIndex = 1;

@@ -8,9 +8,9 @@ namespace Wypozyczalnia.Views
 {
     public interface IRentCar
     {
-        string ClientName { get; }
-        string ClientSurname { get; }
-        string LicenseNumber { get; }
+        string ClientName { get; set; }
+        string ClientSurname { get; set; }
+        string LicenseNumber { get; set; }
 
         DateTime DateStart { get; set; }
         DateTime DateEnd { get; set; }
@@ -21,6 +21,6 @@ namespace Wypozyczalnia.Views
         string LicensePlateNumber { get; set; }
         string Cost { get; set; }
 
-        decimal TotalCost { set; }
+        decimal TotalCost { get; set; }
     }
 }

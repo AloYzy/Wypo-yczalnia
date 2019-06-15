@@ -34,6 +34,24 @@ namespace Wypozyczalnia.Presenters
             }
         }
 
+        public void FillRentData(Rent rent)
+        {
+            rentCarView.ClientName = rent.Client.Name;
+            rentCarView.ClientSurname = rent.Client.Surname;
+            rentCarView.LicenseNumber = rent.Client.LicenseNumber;
+
+            rentCarView.DateStart = rent.StartDate;
+            rentCarView.DateEnd = rent.EndDate;
+
+            rentCarView.TotalCost = rent.TotalCost;
+
+            rentCarView.Manufacturer = rent.Car.Manufacturer;
+            rentCarView.Model = rent.Car.Model;
+            rentCarView.Engine = rent.Car.Engine;
+            rentCarView.LicensePlateNumber = rent.Car.LicensePlateNum;
+            rentCarView.Cost = rent.Car.Cost;
+        }
+
         public void CalculateTotalCost()
         {
             int startDay = rentCarView.DateStart.DayOfYear;
@@ -102,9 +120,21 @@ namespace Wypozyczalnia.Presenters
             return validationResult;
         }
 
-        internal void AddNewRent()
+        public bool AddNewRent()
         {
-            throw new NotImplementedException();
+            bool success = false;
+
+            Client client = Client.AddNewClient(rentCarView.ClientName, rentCarView.ClientSurname, rentCarView.LicenseNumber);
+            Car car = Car.GetCarByLicensePlateNum(rentCarView.LicensePlateNumber);
+
+            Rent rent = new Rent(client, car, rentCarView.DateStart, rentCarView.DateEnd, rentCarView.TotalCost);
+            if (rent.CreateNewRent())
+            {
+                car.SetStatusAsRent(car);
+                success = true;
+            }
+
+            return success;
         }
     }
 }

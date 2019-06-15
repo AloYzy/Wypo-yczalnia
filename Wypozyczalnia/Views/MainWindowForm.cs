@@ -151,5 +151,11 @@ namespace Wypozyczalnia
             rentCarForm. ShowDialog();
 
         }
+
+        private void odbierzSamochodToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form returnCarForm = new ReturnCarForm();
+            returnCarForm.ShowDialog();
+        }
     }
 }

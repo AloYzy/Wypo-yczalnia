@@ -184,6 +184,21 @@ namespace Wypozyczalnia.Models
             return success;
         }
 
+        public void SetStatusAsRent(Car car)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = Helpers.connectionString;
+                sqlConnection.Open();
+
+                SqlCommand command = new SqlCommand($"UPDATE samochody SET status = @status WHERE [numer rejestracyjny] = @licenseNumberPlate", sqlConnection);
+
+                command.Parameters.Add(new SqlParameter("status", EnumStatus.Wypożyczony.ToString()));
+                command.Parameters.Add(new SqlParameter("licenseNumberPlate", car.LicensePlateNum));
+                command.ExecuteNonQuery();
+            }
+        }
+
         public static DataTable SearchAvailableCarsByCriteria(string categoryCriteria, string manufacturerCriteria, string modelCriteria, string driveTypeCriteria, string engineCriteria, DateTime productionDateFrom, DateTime productionDateTo, decimal costFromCriteria, decimal costToCriteria, string gearboxText)
         {
             DataTable dataTable = new DataTable();
@@ -289,6 +304,7 @@ namespace Wypozyczalnia.Models
                     car.Model = dataTable.Rows[0].Field<string>("Model");
                     car.ProductionDate = DateTime.Parse(dataTable.Rows[0].Field<DateTime>("Rok produkcji").ToString());
                     car.VIN = dataTable.Rows[0].Field<string>("VIN");
+                    car.Status = dataTable.Rows[0].Field<string>("Status");
                 }
             }
 
@@ -320,6 +336,7 @@ namespace Wypozyczalnia.Models
                     car.Model = dataTable.Rows[0].Field<string>("Model");
                     car.ProductionDate = DateTime.Parse(dataTable.Rows[0].Field<DateTime>("Rok produkcji").ToString());
                     car.VIN = dataTable.Rows[0].Field<string>("VIN");
+                    car.Status = dataTable.Rows[0].Field<string>("Status");
                 }
             }
 
