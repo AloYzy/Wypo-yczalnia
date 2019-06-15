@@ -26,16 +26,19 @@ namespace Wypozyczalnia.Views
             InitializeComponent();
             RentCarPresenter rentCarPresenter = new RentCarPresenter(this);
             rentCarPresenter.FillRentData(rent);
-            this.DisableControls();
+            this.PrepareControlsForReturnForm();
         }
 
-        private void DisableControls()
+        private void PrepareControlsForReturnForm()
         {
             this.nameTextBox.Enabled = false;
             this.surnameTextBox.Enabled = false;
             this.licenseTextBox.Enabled = false;
             this.endDateTimePicker.Enabled = false;
             this.startDateTimePicker.Enabled = false;
+            this.acceptButton.Enabled = false;
+            this.paidCheckBox.Visible = true;
+            this.Text = "Obierz samochód";
         }
 
         public string ClientName { get => this.nameTextBox.Text; set => this.nameTextBox.Text = value; }
@@ -81,15 +84,7 @@ namespace Wypozyczalnia.Views
         private void CalculateTotalCost()
         {
             RentCarPresenter rentCarPresenter = new RentCarPresenter(this);
-
-            if (rentCarPresenter.ValidateDates().Keys.Contains(false))
-            {
-                this.ShowWarning(rentCarPresenter.ValidateDates()[false]);
-            }
-            else if (rentCarPresenter.ValidateDates().Keys.Contains(true))
-            {
-                rentCarPresenter.CalculateTotalCost();
-            }
+            rentCarPresenter.CalculateTotalCost();
         }
         #endregion
 
@@ -109,27 +104,54 @@ namespace Wypozyczalnia.Views
         }
         #endregion
 
-        private void AcceptRentButton_Click(object sender, EventArgs e)
+        private void AcceptButton_Click(object sender, EventArgs e)
         {
             RentCarPresenter rentCarPresenter = new RentCarPresenter(this);
 
-            if (rentCarPresenter.ValidateClientData().Keys.Contains(false))
+            if (this.paidCheckBox.Visible && this.paidCheckBox.Checked)
             {
-                this.ShowWarning(rentCarPresenter.ValidateClientData()[false]);
+                rentCarPresenter.ReturnCar();
+                this.ShowSuccessInfo("Samochód został zwrócony!");
+                this.acceptButton.Enabled = false;
             }
-            else if (rentCarPresenter.ValidateClientData().Keys.Contains(true))
+            else
             {
-                if (rentCarPresenter.AddNewRent())
+                if (rentCarPresenter.ValidateDates().Keys.Contains(false))
                 {
-                    this.ShowSuccessInfo("Samochód został wypożyczony!");
-                    this.acceptRentButton.Enabled = false;
+                    this.ShowWarning(rentCarPresenter.ValidateDates()[false]);
                 }
-                else
+                else if (rentCarPresenter.ValidateDates().Keys.Contains(true))
                 {
-                    this.ShowWarning("Coś poszło nie tak! Spróbuj ponownie.");
+                    if (rentCarPresenter.ValidateClientData().Keys.Contains(false))
+                    {
+                        this.ShowWarning(rentCarPresenter.ValidateClientData()[false]);
+                    }
+                    else if (rentCarPresenter.ValidateClientData().Keys.Contains(true))
+                    {
+                        if (rentCarPresenter.AddNewRent())
+                        {
+                            this.ShowSuccessInfo("Samochód został wypożyczony!");
+                            this.acceptButton.Enabled = false;
+                        }
+                        else
+                        {
+                            this.ShowWarning("Coś poszło nie tak! Spróbuj ponownie.");
+                        }
+                    }
                 }
             }
         }
 
+        private void paidCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.paidCheckBox.Checked)
+            {
+                this.acceptButton.Enabled = true;
+            }
+            else if (!this.paidCheckBox.Checked)
+            {
+                this.acceptButton.Enabled = false;
+            }
+        }
     }
 }

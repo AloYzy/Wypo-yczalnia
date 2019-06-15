@@ -199,6 +199,21 @@ namespace Wypozyczalnia.Models
             }
         }
 
+        public static void SetStatusAsAvailable(string licensePlateNumber)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = Helpers.connectionString;
+                sqlConnection.Open();
+
+                SqlCommand command = new SqlCommand($"UPDATE samochody SET status = @status WHERE [numer rejestracyjny] = @licenseNumberPlate", sqlConnection);
+
+                command.Parameters.Add(new SqlParameter("status", EnumStatus.Dostępny.ToString()));
+                command.Parameters.Add(new SqlParameter("licenseNumberPlate", licensePlateNumber));
+                command.ExecuteNonQuery();
+            }
+        }
+
         public static DataTable SearchAvailableCarsByCriteria(string categoryCriteria, string manufacturerCriteria, string modelCriteria, string driveTypeCriteria, string engineCriteria, DateTime productionDateFrom, DateTime productionDateTo, decimal costFromCriteria, decimal costToCriteria, string gearboxText)
         {
             DataTable dataTable = new DataTable();

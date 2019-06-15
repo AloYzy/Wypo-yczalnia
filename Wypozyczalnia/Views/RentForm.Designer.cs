@@ -41,7 +41,7 @@
             this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.startLabel = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.acceptRentButton = new System.Windows.Forms.Button();
+            this.acceptButton = new System.Windows.Forms.Button();
             this.carDataGroupBox = new System.Windows.Forms.GroupBox();
             this.costTextBox = new System.Windows.Forms.TextBox();
             this.costLabel = new System.Windows.Forms.Label();
@@ -55,6 +55,7 @@
             this.manufacturerLabel = new System.Windows.Forms.Label();
             this.summaryLabel = new System.Windows.Forms.Label();
             this.totalCostLabel = new System.Windows.Forms.Label();
+            this.paidCheckBox = new System.Windows.Forms.CheckBox();
             this.clientDataGroupBox.SuspendLayout();
             this.rentPeriodGroupBox.SuspendLayout();
             this.carDataGroupBox.SuspendLayout();
@@ -188,15 +189,15 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
-            // acceptRentButton
+            // acceptButton
             // 
-            this.acceptRentButton.Location = new System.Drawing.Point(399, 263);
-            this.acceptRentButton.Name = "acceptRentButton";
-            this.acceptRentButton.Size = new System.Drawing.Size(75, 23);
-            this.acceptRentButton.TabIndex = 3;
-            this.acceptRentButton.Text = "Potwierdź";
-            this.acceptRentButton.UseVisualStyleBackColor = true;
-            this.acceptRentButton.Click += new System.EventHandler(this.AcceptRentButton_Click);
+            this.acceptButton.Location = new System.Drawing.Point(399, 263);
+            this.acceptButton.Name = "acceptButton";
+            this.acceptButton.Size = new System.Drawing.Size(75, 23);
+            this.acceptButton.TabIndex = 3;
+            this.acceptButton.Text = "Potwierdź";
+            this.acceptButton.UseVisualStyleBackColor = true;
+            this.acceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
             // 
             // carDataGroupBox
             // 
@@ -328,15 +329,28 @@
             this.totalCostLabel.Text = "0,00";
             this.totalCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // paidCheckBox
+            // 
+            this.paidCheckBox.AutoSize = true;
+            this.paidCheckBox.Location = new System.Drawing.Point(12, 263);
+            this.paidCheckBox.Name = "paidCheckBox";
+            this.paidCheckBox.Size = new System.Drawing.Size(79, 17);
+            this.paidCheckBox.TabIndex = 7;
+            this.paidCheckBox.Text = "Zapłacono";
+            this.paidCheckBox.UseVisualStyleBackColor = true;
+            this.paidCheckBox.Visible = false;
+            this.paidCheckBox.CheckedChanged += new System.EventHandler(this.paidCheckBox_CheckedChanged);
+            // 
             // RentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 303);
+            this.Controls.Add(this.paidCheckBox);
             this.Controls.Add(this.totalCostLabel);
             this.Controls.Add(this.summaryLabel);
             this.Controls.Add(this.carDataGroupBox);
-            this.Controls.Add(this.acceptRentButton);
+            this.Controls.Add(this.acceptButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.rentPeriodGroupBox);
             this.Controls.Add(this.clientDataGroupBox);
@@ -374,7 +388,7 @@
         private System.Windows.Forms.DateTimePicker startDateTimePicker;
         private System.Windows.Forms.Label startLabel;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.Button acceptRentButton;
+        private System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.GroupBox carDataGroupBox;
         private System.Windows.Forms.TextBox costTextBox;
         private System.Windows.Forms.Label costLabel;
@@ -388,5 +402,6 @@
         private System.Windows.Forms.Label manufacturerLabel;
         private System.Windows.Forms.Label summaryLabel;
         private System.Windows.Forms.Label totalCostLabel;
+        private System.Windows.Forms.CheckBox paidCheckBox;
     }
 }

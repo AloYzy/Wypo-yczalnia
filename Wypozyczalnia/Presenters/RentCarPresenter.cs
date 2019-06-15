@@ -47,7 +47,8 @@ namespace Wypozyczalnia.Presenters
 
             rentCarView.Manufacturer = rent.Car.Manufacturer;
             rentCarView.Model = rent.Car.Model;
-            rentCarView.Engine = rent.Car.Engine;
+            EnumEngineType engine = (EnumEngineType)int.Parse(rent.Car.Engine);
+            rentCarView.Engine = engine.ToString();
             rentCarView.LicensePlateNumber = rent.Car.LicensePlateNum;
             rentCarView.Cost = rent.Car.Cost;
         }
@@ -59,7 +60,10 @@ namespace Wypozyczalnia.Presenters
             decimal cost;
             if (decimal.TryParse(rentCarView.Cost, out cost))
             {
-                rentCarView.TotalCost = (endDay - startDay) * cost;
+                if (endDay >= startDay)
+                {
+                    rentCarView.TotalCost = (endDay - startDay) * cost;
+                }
             }
         }
 
@@ -135,6 +139,11 @@ namespace Wypozyczalnia.Presenters
             }
 
             return success;
+        }
+
+        public void ReturnCar()
+        {
+            Car.SetStatusAsAvailable(rentCarView.LicensePlateNumber);
         }
     }
 }

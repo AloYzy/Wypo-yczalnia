@@ -70,6 +70,7 @@
             this.Controls.Add(this.licensePlateNumberTextBox);
             this.Controls.Add(this.licensePlateNumberLabel);
             this.Controls.Add(this.searchButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ReturnCarForm";

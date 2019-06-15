@@ -36,9 +36,9 @@ namespace Wypozyczalnia.Views
             ReturnCarPresenter returnCarPresenter = new ReturnCarPresenter(this);
             if (returnCarPresenter.FindRent())
             {
+                this.SearchPossible = false;
                 RentForm rentForm = new RentForm(Rent);
                 rentForm.ShowDialog();
-                //this.
             }
         }
     }
