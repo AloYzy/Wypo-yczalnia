@@ -40,6 +40,7 @@ namespace Wypozyczalnia.Models
     public enum EnumStatus
     {
         Dostępny,
+        Usunięty,
         Wypożyczony
     }
 
@@ -132,6 +133,33 @@ namespace Wypozyczalnia.Models
             return id;
         }
 
+        public static string GetStatus(string columnName, string columnValue)
+        {
+            string status = string.Empty;
+
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = Helpers.connectionString;
+                sqlConnection.Open();
+
+                SqlCommand subQuery = new SqlCommand($"SELECT Status FROM samochody where [{columnName}] = '{columnValue}'", sqlConnection);
+                try
+                {
+                    SqlDataAdapter sqlAdapter = new SqlDataAdapter(subQuery);
+                    DataTable dataTable = new DataTable();
+                    sqlAdapter.Fill(dataTable);
+                    status = dataTable.Rows[0]["Status"].ToString();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+
+            return status;
+        }
+
         public bool UpdateCar(int id)
         {
             bool success = false;
@@ -210,6 +238,21 @@ namespace Wypozyczalnia.Models
 
                 command.Parameters.Add(new SqlParameter("status", EnumStatus.Dostępny.ToString()));
                 command.Parameters.Add(new SqlParameter("licenseNumberPlate", licensePlateNumber));
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public static void SetStatusAsDeleted(string columnName, string columnValue)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = Helpers.connectionString;
+                sqlConnection.Open();
+
+                SqlCommand command = new SqlCommand($"UPDATE samochody SET status = @status WHERE [{columnName}] = @columnValue", sqlConnection);
+
+                command.Parameters.Add(new SqlParameter("status", EnumStatus.Usunięty.ToString()));
+                command.Parameters.Add(new SqlParameter("columnValue", columnValue));
                 command.ExecuteNonQuery();
             }
         }

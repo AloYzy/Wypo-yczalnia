@@ -152,10 +152,16 @@ namespace Wypozyczalnia
 
         }
 
-        private void odbierzSamochodToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OdbierzSamochodToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form returnCarForm = new ReturnCarForm();
             returnCarForm.ShowDialog();
+        }
+
+        private void usunSamochodToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form deleteCarForm = new DeleteCarForm();
+            deleteCarForm.ShowDialog();
         }
     }
 }

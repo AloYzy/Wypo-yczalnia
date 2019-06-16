@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Rent.cs" />
+    <Compile Include="Presenters\DeleteCarPresenter.cs" />
     <Compile Include="Presenters\RentCarPresenter.cs" />
     <Compile Include="Presenters\ReturnCarPresenter.cs" />
     <Compile Include="Presenters\SearchCarPresenter.cs" />
@@ -73,6 +74,13 @@
       <DependentUpon>AddNewCarForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers.cs" />
+    <Compile Include="Views\DeleteCarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DeleteCarForm.Designer.cs">
+      <DependentUpon>DeleteCarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IDeleteCar.cs" />
     <Compile Include="Views\IRentCar.cs" />
     <Compile Include="Views\IReturnCar.cs" />
     <Compile Include="Views\IShowCars.cs" />
@@ -127,6 +135,9 @@
     </Compile>
     <EmbeddedResource Include="Views\AddNewCarForm.resx">
       <DependentUpon>AddNewCarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DeleteCarForm.resx">
+      <DependentUpon>DeleteCarForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

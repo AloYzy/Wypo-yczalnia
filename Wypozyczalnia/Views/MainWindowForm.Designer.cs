@@ -130,7 +130,7 @@
             this.odbierzSamochodToolStripMenuItem.Name = "odbierzSamochodToolStripMenuItem";
             this.odbierzSamochodToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.odbierzSamochodToolStripMenuItem.Text = "Odbierz samochód";
-            this.odbierzSamochodToolStripMenuItem.Click += new System.EventHandler(this.odbierzSamochodToolStripMenuItem_Click);
+            this.odbierzSamochodToolStripMenuItem.Click += new System.EventHandler(this.OdbierzSamochodToolStripMenuItem_Click);
             // 
             // dodajSamochodToolStripMenuItem
             // 
@@ -151,6 +151,7 @@
             this.usunSamochodToolStripMenuItem.Name = "usunSamochodToolStripMenuItem";
             this.usunSamochodToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.usunSamochodToolStripMenuItem.Text = "Usuń samochód";
+            this.usunSamochodToolStripMenuItem.Click += new System.EventHandler(this.usunSamochodToolStripMenuItem_Click);
             // 
             // showCarsPanel
             // 
