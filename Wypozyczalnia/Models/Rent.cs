@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Wypozyczalnia.Models
 {
+    /// <summary>
+    /// Class that represents single car rent.
+    /// </summary>
     public class Rent
     {
         public Client Client { get; set; }
@@ -29,6 +32,10 @@ namespace Wypozyczalnia.Models
         {
         }
 
+        /// <summary>
+        /// Saves new car rent to database.
+        /// </summary>
+        /// <returns>True if save succeeded, false if save failed.</returns>
         public bool CreateNewRent()
         {
             bool success = false;
@@ -62,6 +69,11 @@ namespace Wypozyczalnia.Models
             return success;
         }
 
+        /// <summary>
+        /// Reads database and serached for rent based on given car id.
+        /// </summary>
+        /// <param name="id">Integer that represent car id.</param>
+        /// <returns>Rent objetc.</returns>
         public static Rent GetRentByCarId(int id)
         {
             Rent rent = new Rent();

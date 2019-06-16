@@ -8,12 +8,22 @@ using System.Threading.Tasks;
 
 namespace Wypozyczalnia.Models
 {
+    /// <summary>
+    /// Class that represents single client.
+    /// </summary>
     public class Client
     {
         public string Name { get; set; }
         public string Surname { get; set; }
         public string LicenseNumber { get; set; }
 
+        /// <summary>
+        /// Saves new client to database.
+        /// </summary>
+        /// <param name="clientName">String that represent client's name.</param>
+        /// <param name="clientSurname">String that represent client's surname.</param>
+        /// <param name="licenseNumber">String that represent client's license number.</param>
+        /// <returns>Client object that represents newly added client.</returns>
         public static Client AddNewClient(string clientName, string clientSurname, string licenseNumber)
         {
             Client client = new Client();
@@ -42,6 +52,11 @@ namespace Wypozyczalnia.Models
             return client;
         }
 
+        /// <summary>
+        /// Reads database and seraches for client id based on given license number.
+        /// </summary>
+        /// <param name="licenseNumber">String that represent client's license number.</param>
+        /// <returns>Integer that represent client record in database.</returns>
         public int GetClientIdByLicenseNumber(string licenseNumber)
         {
             int id = -1;
@@ -64,6 +79,11 @@ namespace Wypozyczalnia.Models
             return id;
         }
 
+        /// <summary>
+        /// Reads database and seraches for client based on given license number.
+        /// </summary>
+        /// <param name="licenseNumber">String that represent client's license number.</param>
+        /// <returns>Client object.</returns>
         private static Client GetClientByLicenceNumber(string licenseNumber)
         {
             Client client = new Client();
@@ -88,6 +108,11 @@ namespace Wypozyczalnia.Models
             return client;
         }
 
+        /// <summary>
+        /// Reads database and seraches for client based on given id.
+        /// </summary>
+        /// <param name="id">Integer that represent client record in database.</param>
+        /// <returns>Client object.</returns>
         public static Client GetClientById(int id)
         {
             Client client = new Client();
@@ -112,6 +137,11 @@ namespace Wypozyczalnia.Models
             return client;
         }
 
+        /// <summary>
+        /// Reads database and validates if client with given license number is already present.
+        /// </summary>
+        /// <param name="licenseNumber">String that represent client's license number.</param>
+        /// <returns>True if client with given license number is already present in database, false if client with given license number is not present in database.</returns>
         private static bool CheckIfClientExists(string licenseNumber)
         {
             bool exists = false;

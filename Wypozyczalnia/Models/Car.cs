@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace Wypozyczalnia.Models
 {
-
+    /// <summary>
+    /// Enum that contains all possible categories of cars.
+    /// </summary>
     public enum EnumCategory
     {
         Hatchback,
@@ -17,6 +19,9 @@ namespace Wypozyczalnia.Models
         Suv
     }
 
+    /// <summary>
+    /// Enum that contains all possible drive types. 
+    /// </summary>
     public enum EnumDriveType
     {
         AllDrive,
@@ -24,6 +29,9 @@ namespace Wypozyczalnia.Models
         Tylny
     }
 
+    /// <summary>
+    /// Enum that contains all possible engine types.
+    /// </summary>
     public enum EnumEngineType
     {
         Benzynowy,
@@ -31,12 +39,18 @@ namespace Wypozyczalnia.Models
         Hybrydowy
     }
 
+    /// <summary>
+    /// Enum that contains all possible gearbox types.
+    /// </summary>
     public enum EnumGearboxType
     {
         Automatyczna,
         Manualna
     }
 
+    /// <summary>
+    /// Enum that contains all possible statuses of car.
+    /// </summary>
     public enum EnumStatus
     {
         Dostępny,
@@ -44,6 +58,9 @@ namespace Wypozyczalnia.Models
         Wypożyczony
     }
 
+    /// <summary>
+    /// Class that represents single car.
+    /// </summary>
     public class Car
     {
         public string Category { get; set; }
@@ -59,6 +76,10 @@ namespace Wypozyczalnia.Models
         public string Status { get; set; }
         public string VIN { get; set; }
 
+        /// <summary>
+        /// Prepare data for comboBox controls used in some forms (like MainWindowForm and AddNewCarForm).
+        /// </summary>
+        /// <returns>Dictionary with all possible values for each comboBox control.</returns>
         public static Dictionary<string, string[]> FillComboBoxes()
         {
             Dictionary<string, string[]> comboBoxes = new Dictionary<string, string[]>();
@@ -106,6 +127,12 @@ namespace Wypozyczalnia.Models
             VIN = string.Empty;
         }
 
+        /// <summary>
+        /// Reads database and return id of car based on provided params.
+        /// </summary>
+        /// <param name="columnName">String that represents column name in database.</param>
+        /// <param name="columnValue">String that represents column value in database.</param>
+        /// <returns>Id of car.</returns>
         public int GetId(string columnName, string columnValue)
         {
             int id = -1;
@@ -133,6 +160,12 @@ namespace Wypozyczalnia.Models
             return id;
         }
 
+        /// <summary>
+        /// Reads database and return status of car based on provided params.
+        /// </summary>
+        /// <param name="columnName">String that represents column name in database.</param>
+        /// <param name="columnValue">String that represents column value in database.</param>
+        /// <returns>Status of car.</returns>
         public static string GetStatus(string columnName, string columnValue)
         {
             string status = string.Empty;
@@ -160,6 +193,11 @@ namespace Wypozyczalnia.Models
             return status;
         }
 
+        /// <summary>
+        /// Updates car data in database.
+        /// </summary>
+        /// <param name="id">Integer that represents id of car.</param>
+        /// <returns>True if update succeeded, false if update failed.</returns>
         public bool UpdateCar(int id)
         {
             bool success = false;
@@ -212,6 +250,10 @@ namespace Wypozyczalnia.Models
             return success;
         }
 
+        /// <summary>
+        /// Change car status in database as "rent".
+        /// </summary>
+        /// <param name="car">Car object.</param>
         public void SetStatusAsRent(Car car)
         {
             using (SqlConnection sqlConnection = new SqlConnection())
@@ -227,6 +269,10 @@ namespace Wypozyczalnia.Models
             }
         }
 
+        /// <summary>
+        /// Change car status in database as "available".
+        /// </summary>
+        /// <param name="licensePlateNumber">String that represent license plate number of car.</param>
         public static void SetStatusAsAvailable(string licensePlateNumber)
         {
             using (SqlConnection sqlConnection = new SqlConnection())
@@ -242,6 +288,11 @@ namespace Wypozyczalnia.Models
             }
         }
 
+        /// <summary>
+        /// Change car status in database as "deleted".
+        /// </summary>
+        /// <param name="columnName">String that represents column name in database.</param>
+        /// <param name="columnValue">String that represents column value in database.</param>
         public static void SetStatusAsDeleted(string columnName, string columnValue)
         {
             using (SqlConnection sqlConnection = new SqlConnection())
@@ -257,6 +308,20 @@ namespace Wypozyczalnia.Models
             }
         }
 
+        /// <summary>
+        /// Reads database and searches for available cars based on given criteria.
+        /// </summary>
+        /// <param name="categoryCriteria">String that represents criteria that car must fulfil.</param>
+        /// <param name="manufacturerCriteria">String that represents criteria that car must fulfil.</param>
+        /// <param name="modelCriteria">String that represents criteria that car must fulfil.</param>
+        /// <param name="driveTypeCriteria">String that represents criteria that car must fulfil.</param>
+        /// <param name="engineCriteria">String that represents criteria that car must fulfil.</param>
+        /// <param name="productionDateFrom">DateTime that represents the oldest possible production date of the car.</param>
+        /// <param name="productionDateTo">DateTime that represents the youngest possible production date of the car.</param>
+        /// <param name="costFromCriteria">Decimal that represents the cheapest possible car.</param>
+        /// <param name="costToCriteria">Decimal that represents the most expensive possible car.</param>
+        /// <param name="gearboxText">String that represents criteria that car must fulfil.</param>
+        /// <returns>DataTable with all cars that filfilled given criteria.</returns>
         public static DataTable SearchAvailableCarsByCriteria(string categoryCriteria, string manufacturerCriteria, string modelCriteria, string driveTypeCriteria, string engineCriteria, DateTime productionDateFrom, DateTime productionDateTo, decimal costFromCriteria, decimal costToCriteria, string gearboxText)
         {
             DataTable dataTable = new DataTable();
@@ -275,6 +340,10 @@ namespace Wypozyczalnia.Models
             return dataTable;
         }
 
+        /// <summary>
+        /// Reads database and searches the most expensive car.
+        /// </summary>
+        /// <returns>Decimal that represents the most expensive car.</returns>
         public static decimal getMaxCost()
         {
 
@@ -298,6 +367,10 @@ namespace Wypozyczalnia.Models
             return maxCost;
         }
 
+        /// <summary>
+        /// Save new car to database.
+        /// </summary>
+        /// <returns>True if save succeeded, false if save failed.</returns>
         public bool AddNewCar()
         {
             bool success = false;
@@ -337,6 +410,11 @@ namespace Wypozyczalnia.Models
             return success;
         }
 
+        /// <summary>
+        /// Reads database and searches car based on given license plate number.
+        /// </summary>
+        /// <param name="licensePlateNum">String that represents license plate number.</param>
+        /// <returns>Car object.</returns>
         public static Car GetCarByLicensePlateNum(string licensePlateNum)
         {
             Car car = new Car();
@@ -369,6 +447,11 @@ namespace Wypozyczalnia.Models
             return car;
         }
 
+        /// <summary>
+        /// Reads database and searches car based on given VIN number.
+        /// </summary>
+        /// <param name="VIN">String that represents VIN number.</param>
+        /// <returns>Car object.</returns>
         public static Car GetCarByVIN(string VIN)
         {
             Car car = new Car();
@@ -401,6 +484,10 @@ namespace Wypozyczalnia.Models
             return car;
         }
 
+        /// <summary>
+        /// Validates if car data are correct.
+        /// </summary>
+        /// <returns>Dictionary with key = ture if data are correct, key = false if data are incorrect.</returns>
         public Dictionary<bool, string> ValidateCar()
         {
             bool valid = true;
@@ -497,6 +584,10 @@ namespace Wypozyczalnia.Models
             return validationResult;
         }
 
+        /// <summary>
+        /// Validates if car data are correct.
+        /// </summary>
+        /// <returns>Dictionary with key = ture if data are correct, key = false if data are incorrect.</returns>
         public Dictionary<bool, string> SimpleValidateCar()
         {
             bool valid = true;
@@ -583,6 +674,10 @@ namespace Wypozyczalnia.Models
             return validationResult;
         }
 
+        /// <summary>
+        /// Validates if VIN number is correct.
+        /// </summary>
+        /// <returns>Dictionary with key = ture if VIN number is correct, key = false if VIN number is incorrect.</returns>
         public Dictionary<Boolean, string> ValidateVINNumber()
         {
             Dictionary<Boolean, string> validationResult = new Dictionary<bool, string>();
@@ -609,6 +704,10 @@ namespace Wypozyczalnia.Models
             return validationResult;
         }
 
+        /// <summary>
+        /// Checks if VIN number is already present in database.
+        /// </summary>
+        /// <returns>True if VIN number is already present in database, false if VIN number is not present in database.</returns>
         public Boolean IsVINPresent()
         {
             Boolean exists = false;
@@ -630,6 +729,10 @@ namespace Wypozyczalnia.Models
             return exists;
         }
 
+        /// <summary>
+        /// Validates if license plate number is correct.
+        /// </summary>
+        /// <returns>Dictionary with key = ture if license plate number is correct, key = false if license plate number is incorrect.</returns>
         public Dictionary<Boolean, string> ValidateLicensePlatenumber()
         {
             Dictionary<Boolean, string> validationResult = new Dictionary<bool, string>();
@@ -656,6 +759,10 @@ namespace Wypozyczalnia.Models
             return validationResult;
         }
 
+        /// <summary>
+        /// Checks if license plate number is already present in database.
+        /// </summary>
+        /// <returns>True if license plate number is already present in database, false if license plate number is not present in database.</returns>
         public Boolean IsLicensePlateNumberPresent()
         {
             Boolean exists = false;
@@ -677,6 +784,10 @@ namespace Wypozyczalnia.Models
             return exists;
         }
 
+        /// <summary>
+        /// Reads database and searches for all categories already present in database.
+        /// </summary>
+        /// <returns>DataTable that contains all categories present in database.</returns>
         public static DataTable getAllCategories()
         {
             DataTable dataTable = new DataTable();
@@ -693,6 +804,10 @@ namespace Wypozyczalnia.Models
             return dataTable;
         }
 
+        /// <summary>
+        /// Reads database and searches for all drive types already present in database.
+        /// </summary>
+        /// <returns>DataTable that contains all drive types present in database.</returns>
         public static DataTable getAllDriveTypes()
         {
             DataTable dataTable = new DataTable();
@@ -709,6 +824,10 @@ namespace Wypozyczalnia.Models
             return dataTable;
         }
 
+        /// <summary>
+        /// Reads database and searches for all engine types already present in database.
+        /// </summary>
+        /// <returns>DataTable that contains all engine types present in database.</returns>
         public static DataTable getAllEngines()
         {
             DataTable dataTable = new DataTable();
@@ -725,6 +844,10 @@ namespace Wypozyczalnia.Models
             return dataTable;
         }
 
+        /// <summary>
+        /// Reads database and searches for all manufacturers already present in database.
+        /// </summary>
+        /// <returns>DataTable that contains all manufacturers present in database.</returns>
         public static DataTable getAllManufacturers()
         {
             DataTable dataTable = new DataTable();
@@ -741,6 +864,10 @@ namespace Wypozyczalnia.Models
             return dataTable;
         }
 
+        /// <summary>
+        /// Reads database and searches for all models already present in database.
+        /// </summary>
+        /// <returns>DataTable that contains all models present in database.</returns>
         public static DataTable getAllModels()
         {
             DataTable dataTable = new DataTable();
@@ -757,6 +884,10 @@ namespace Wypozyczalnia.Models
             return dataTable;
         }
 
+        /// <summary>
+        /// Reads database and searches for all available cars.
+        /// </summary>
+        /// <returns>DataTable that contains all available cars.</returns>
         public static DataTable SearchAllAvailableCars()
         {
             DataTable dataTable = new DataTable();
@@ -773,6 +904,10 @@ namespace Wypozyczalnia.Models
             return dataTable;
         }
 
+        /// <summary>
+        /// Reads database and searches for all cars.
+        /// </summary>
+        /// <returns>DataTable that contains all cars.</returns>
         public static DataTable SearchAllCars()
         {
             DataTable dataTable = new DataTable();

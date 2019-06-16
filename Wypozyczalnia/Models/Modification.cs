@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Wypozyczalnia.Models
 {
+    /// <summary>
+    /// Class that represent single car modification.
+    /// </summary>
     public class Modification
     {
         public Car Car { get; set; }
@@ -14,6 +17,10 @@ namespace Wypozyczalnia.Models
         public string SearchLicensePlaneNumText { get; set; }
         public string SearchVINText { get; set; }
 
+        /// <summary>
+        /// Validates if given criteria are correct.
+        /// </summary>
+        /// <returns>Dictionary with key = ture if criteria are correct, key = false if criteria are incorrect.</returns>
         public Dictionary<bool, string> ValidateSearchCriteria()
         {
             Dictionary<bool, string> validationResult = new Dictionary<bool, string>();
@@ -59,11 +66,19 @@ namespace Wypozyczalnia.Models
             return validationResult;
         }
 
+        /// <summary>
+        /// Reads database for data of single car.
+        /// </summary>
+        /// <returns>Car object.</returns>
         public Car LoadCarData()
         {
             return (!string.IsNullOrWhiteSpace(SearchLicensePlaneNumText) ? Car.GetCarByLicensePlateNum(SearchLicensePlaneNumText) : ((!string.IsNullOrWhiteSpace(SearchVINText) ? Car.GetCarByVIN(SearchVINText) : new Car())));
         }
 
+        /// <summary>
+        /// Saves car modification.
+        /// </summary>
+        /// <returns>Dictionary with key = ture if save succeeded, key = false if save failed.</returns>
         public Dictionary<bool, string> SaveModification()
         {
             bool valid = true;

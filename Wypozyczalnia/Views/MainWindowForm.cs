@@ -25,7 +25,7 @@ namespace Wypozyczalnia
 
         public CheckedListBox.CheckedItemCollection EngineText => engineCheckedListBox.CheckedItems;
 
-        public string GearboxText => gearboxRadioButton1.Checked ? gearboxRadioButton1.Text : (gearboxRadioButton2.Checked ? gearboxRadioButton2.Text : ($"('{gearboxRadioButton1.Text}', '{gearboxRadioButton2.Text}')"));
+        public string GearboxText => gearboxRadioButton1.Checked ? "('" + gearboxRadioButton1.Text + "')" : (gearboxRadioButton2.Checked ? "('" + gearboxRadioButton2.Text + "')" : ($"('{gearboxRadioButton1.Text}', '{gearboxRadioButton2.Text}')"));
 
         public CheckedListBox.CheckedItemCollection ManufacturerText => manufacturerCheckedListBox.CheckedItems;
 
@@ -148,7 +148,7 @@ namespace Wypozyczalnia
         private void ShowRentCarForm(object sender, DataGridViewCellEventArgs e)
         {
             Form rentCarForm = new RentForm(sender, e);
-            rentCarForm. ShowDialog();
+            rentCarForm.ShowDialog();
 
         }
 

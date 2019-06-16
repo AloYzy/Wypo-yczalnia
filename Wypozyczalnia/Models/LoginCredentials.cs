@@ -7,11 +7,18 @@ using System.Threading.Tasks;
 
 namespace Wypozyczalnia.Models
 {
+    /// <summary>
+    /// Class that represent user login and password.
+    /// </summary>
     public class LoginCredentials
     {
         public string Login { get; set; }
         public string Password { get; set; }
 
+        /// <summary>
+        /// Reads database and verify if exists user with given login and password.
+        /// </summary>
+        /// <returns>True if exists user with given login and password, false if user with given login and password does not exist in database.</returns>
         public bool LogInWorker()
         {
             bool logedIn = false;
