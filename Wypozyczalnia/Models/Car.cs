@@ -333,7 +333,7 @@ namespace Wypozyczalnia.Models
 
                 var sqlDataAdaper = new SqlDataAdapter($"SELECT * FROM samochody WHERE " +
                     $"klasa in ({categoryCriteria}) AND marka in ({manufacturerCriteria}) AND model in ({modelCriteria}) AND [rodzaj napędu] in ({driveTypeCriteria}) " +
-                    $"AND silnik in ({engineCriteria}) AND ([rok produkcji] >= '{productionDateFrom}' AND [rok produkcji] <= '{productionDateTo}' AND ([koszt wynajęcia] BETWEEN {costFromCriteria.ToString().Replace(',', '.')} AND {costToCriteria.ToString().Replace(',', '.')}) AND [skrzynia biegów] in {gearboxText}) ORDER BY id ASC", sqlConnection);
+                    $"AND silnik in ({engineCriteria}) AND ([rok produkcji] >= '{productionDateFrom}' AND [rok produkcji] <= '{productionDateTo}' AND ([koszt wynajęcia] BETWEEN {costFromCriteria.ToString().Replace(',', '.')} AND {costToCriteria.ToString().Replace(',', '.')}) AND [skrzynia biegów] in {gearboxText}) AND status = '{EnumStatus.Dostępny.ToString()}' ORDER BY id ASC", sqlConnection);
                 sqlDataAdaper.Fill(dataTable);
             }
 
