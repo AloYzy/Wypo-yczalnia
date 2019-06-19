@@ -47,6 +47,7 @@
             // 
             // licensePlateNumberTextBox
             // 
+            this.licensePlateNumberTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.licensePlateNumberTextBox.Location = new System.Drawing.Point(118, 10);
             this.licensePlateNumberTextBox.Name = "licensePlateNumberTextBox";
             this.licensePlateNumberTextBox.Size = new System.Drawing.Size(120, 20);
@@ -55,6 +56,7 @@
             // 
             // VINTextBox
             // 
+            this.VINTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.VINTextBox.Location = new System.Drawing.Point(118, 44);
             this.VINTextBox.Name = "VINTextBox";
             this.VINTextBox.Size = new System.Drawing.Size(120, 20);

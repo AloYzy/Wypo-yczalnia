@@ -162,6 +162,7 @@
             // 
             // manufacturerTextBox
             // 
+            this.manufacturerTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.manufacturerTextBox.Location = new System.Drawing.Point(109, 42);
             this.manufacturerTextBox.Name = "manufacturerTextBox";
             this.manufacturerTextBox.Size = new System.Drawing.Size(121, 20);
@@ -169,6 +170,7 @@
             // 
             // costTextBox
             // 
+            this.costTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.costTextBox.Location = new System.Drawing.Point(108, 222);
             this.costTextBox.Name = "costTextBox";
             this.costTextBox.Size = new System.Drawing.Size(121, 20);
@@ -176,6 +178,7 @@
             // 
             // modelTextBox
             // 
+            this.modelTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.modelTextBox.Location = new System.Drawing.Point(108, 72);
             this.modelTextBox.Name = "modelTextBox";
             this.modelTextBox.Size = new System.Drawing.Size(121, 20);
@@ -212,6 +215,7 @@
             // 
             // VINTextBox
             // 
+            this.VINTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.VINTextBox.Location = new System.Drawing.Point(108, 252);
             this.VINTextBox.Name = "VINTextBox";
             this.VINTextBox.Size = new System.Drawing.Size(121, 20);
@@ -219,6 +223,7 @@
             // 
             // licensePlateNumberTextBox
             // 
+            this.licensePlateNumberTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.licensePlateNumberTextBox.Location = new System.Drawing.Point(108, 282);
             this.licensePlateNumberTextBox.Name = "licensePlateNumberTextBox";
             this.licensePlateNumberTextBox.Size = new System.Drawing.Size(121, 20);

@@ -61,6 +61,7 @@
             // 
             // searchVINTextBox
             // 
+            this.searchVINTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.searchVINTextBox.Location = new System.Drawing.Point(44, 12);
             this.searchVINTextBox.Name = "searchVINTextBox";
             this.searchVINTextBox.Size = new System.Drawing.Size(120, 20);
@@ -87,6 +88,7 @@
             // 
             // searchLicensePlateNumberTextBox
             // 
+            this.searchLicensePlateNumberTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.searchLicensePlateNumberTextBox.Location = new System.Drawing.Point(277, 12);
             this.searchLicensePlateNumberTextBox.Name = "searchLicensePlateNumberTextBox";
             this.searchLicensePlateNumberTextBox.Size = new System.Drawing.Size(120, 20);
@@ -123,6 +125,7 @@
             // 
             // manufacturerTextBox
             // 
+            this.manufacturerTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.manufacturerTextBox.Location = new System.Drawing.Point(98, 94);
             this.manufacturerTextBox.Name = "manufacturerTextBox";
             this.manufacturerTextBox.Size = new System.Drawing.Size(120, 20);
@@ -139,6 +142,7 @@
             // 
             // modelTextBox
             // 
+            this.modelTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.modelTextBox.Location = new System.Drawing.Point(98, 124);
             this.modelTextBox.Name = "modelTextBox";
             this.modelTextBox.Size = new System.Drawing.Size(120, 20);
@@ -191,6 +195,7 @@
             // 
             // costTextBox
             // 
+            this.costTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.costTextBox.Location = new System.Drawing.Point(98, 274);
             this.costTextBox.Name = "costTextBox";
             this.costTextBox.Size = new System.Drawing.Size(120, 20);
@@ -207,6 +212,7 @@
             // 
             // VINTextBox
             // 
+            this.VINTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.VINTextBox.Location = new System.Drawing.Point(98, 304);
             this.VINTextBox.Name = "VINTextBox";
             this.VINTextBox.Size = new System.Drawing.Size(120, 20);
@@ -223,6 +229,7 @@
             // 
             // licensePlateNumberTextBox
             // 
+            this.licensePlateNumberTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.licensePlateNumberTextBox.Location = new System.Drawing.Point(98, 334);
             this.licensePlateNumberTextBox.Name = "licensePlateNumberTextBox";
             this.licensePlateNumberTextBox.Size = new System.Drawing.Size(120, 20);
